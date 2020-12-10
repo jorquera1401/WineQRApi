@@ -14,6 +14,14 @@ class VinaController extends Controller
     public function index()
     {
         //
+        $vinas = Vina::all();
+        return view('vina')->with('vinas',$vinas);
+    }
+
+    public function generar(Request $request){
+   
+        $vina = $request->input('nombre');
+        return view('codigoQr',array('codigo'=>$vina, 'hola'=>"paalala"));
     }
 
     /**
@@ -52,6 +60,7 @@ class VinaController extends Controller
     {
         return  Vina::where('id', $id)->get();
     }
+
 
     /**
      * Show the form for editing the specified resource.

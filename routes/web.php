@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+   
     return view('welcome');
 });
+
+Route::get('vina', 'VinaController@index');
+
+Route::post('/prueba', 'VinaController@generar')->name('prueba');
