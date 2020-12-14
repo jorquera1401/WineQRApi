@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('vina', 'VinaController@index');
+Route::get('/vina', 'VinaController@index')->name('vina');
 
 Route::post('/prueba', 'VinaController@generar')->name('prueba');

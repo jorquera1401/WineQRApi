@@ -9,19 +9,16 @@
     @else 
         <h1>Si hay</h1>
         <form method="POST" action="{{route('prueba')}}">
-            @csrf
-        <input type="text" name="texto"/>
+            @csrf 
         <select name="nombre">
         @foreach ($vinas as $item)
-            <option  value="{{$item->nombre}}">{{$item->nombre}}"</option>
+            <option  value="{{$item->hash}}">{{$item->nombre}}"</option>
         @endforeach
         </select>
-        <input type="submit" value="Guardar"/>
+        <input type="submit" value="Generar"/>
         </form>
-        <div class="title m-b-md">
-            {!!QrCode::size(300)->generate("sandi")!!}
-        </div> 
-        @yield("prueba")
+      
+        
     @endif
        
     </div> 

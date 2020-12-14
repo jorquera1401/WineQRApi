@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Sstema de trazabilidad Codigo QR</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
@@ -74,6 +74,7 @@
                 </div>
                 <div class="card-body">
                     @yield('content')
+                    @yield('codigo')
                 </div>
             
                 

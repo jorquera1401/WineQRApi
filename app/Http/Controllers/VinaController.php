@@ -21,7 +21,8 @@ class VinaController extends Controller
     public function generar(Request $request){
    
         $vina = $request->input('nombre');
-        return view('codigoQr',array('codigo'=>$vina, 'hola'=>"paalala"));
+        $direccion = "http://localhost:8000/api/vina/".$vina;
+        return view('codigoQr',array('codigo'=>$vina, 'hola'=>"Codigo Qr"));
     }
 
     /**
@@ -47,6 +48,7 @@ class VinaController extends Controller
         $vina->nombre = $request->nombre;
         $vina->direccion  =$request->direccion;
         $vina->descripcion = $request->descripcion;
+        $vina->hash = $request->hash;
         $vina->save();
     }
 
@@ -58,7 +60,7 @@ class VinaController extends Controller
      */
     public function show($id)
     {
-        return  Vina::where('id', $id)->get();
+        return  Vina::where('hash', $id)->get();
     }
 
 

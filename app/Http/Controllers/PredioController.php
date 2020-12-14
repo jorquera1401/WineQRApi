@@ -28,7 +28,7 @@ class PredioController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Se almacenan los datos del predio a traves de arduino
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -40,6 +40,7 @@ class PredioController extends Controller
         $predio->locacion = $request->locacion;
         $predio->tipo = $request->tipo;
         $predio->descripcion = $request->descripcion;
+        $predio->hash = $request->hash;
         $predio->save();
     }
 
@@ -51,7 +52,7 @@ class PredioController extends Controller
      */
     public function show($id)
     {
-        return Predio::where('id', $id)->get();
+        return Predio::where('hash', $id)->get();
     }
 
     /**

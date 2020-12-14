@@ -18,6 +18,8 @@ class CreateTableVina extends Migration
             $table->string('nombre');
             $table->string('direccion');
             $table->string('descripcion');
+            $table->integer('hash')->unique();
+            
 
             $table->timestamps();
         });
