@@ -22,7 +22,7 @@ class VinaController extends Controller
    
         $vina = $request->input('nombre');
         $direccion = "http://localhost:8000/api/vina/".$vina;
-        return view('codigoQr',array('codigo'=>$vina, 'hola'=>"Codigo Qr"));
+        return view('codigoQr',array('codigo'=>$vina, 'tipo'=>"vina"));
     }
 
     /**

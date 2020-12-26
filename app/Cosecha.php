@@ -8,5 +8,5 @@ class Cosecha extends Model
 {
     //
     protected $table='cosecha';
-    protected $fillname = ['fecha', 'temperatura', 'humedad', 'descripcion'];
+    protected $fillname = ['fecha', 'temperatura', 'humedad', 'descripcion', 'hash_entrada', 'hash_salida'];
 }

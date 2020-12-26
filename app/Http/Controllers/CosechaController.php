@@ -14,7 +14,13 @@ class CosechaController extends Controller
      */
     public function index()
     {
-        //
+        $cosecha = Cosecha::all();
+        return view('cosecha')->with('cosechas', $cosecha);
+    }
+
+    public function generar(Request $request){
+        $cosecha = $request->input('nombre');
+        return view('codigoQr', array('codigo'=>$cosecha, 'tipo'=>'cosecha'));
     }
 
     /**
@@ -40,6 +46,8 @@ class CosechaController extends Controller
         $cosecha->temperatura=$request->temperatura;
         $cosecha->humedad=$request->humedad;
         $cosecha->descripcion = $request->descripcion;
+        $cosecha->hash_entrada = $request->hash_entrada;
+        $cosecha->hash_salida = $request->hash_salida;
         $cosecha->save();
     }
 
@@ -51,7 +59,7 @@ class CosechaController extends Controller
      */
     public function show($id)
     {
-        return Cosecha::where('id', $id)->get();
+        return Cosecha::where('hash_salida', $id)->get();
     }
 
     /**

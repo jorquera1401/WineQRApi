@@ -28,13 +28,7 @@
     <body id="page-top">
       
         <div class="flex-center position-ref full-height">
-          
-
-            
         </div>
-
- 
-
             <!-- Page Wrapper -->
             <div id="wrapper">
         
@@ -71,9 +65,9 @@
         
                     <!-- Nav Item - Utilities Collapse Menu -->
                     <li class="nav-item">
-                        <a class="nav-link collapsed" href="#"  aria-controls="collapseUtilities">
+                        <a class="nav-link collapsed" href="{{route('cosecha')}}"  aria-controls="collapseUtilities">
                             <i class="fas fa-fw fa-wrench"></i>
-                            <span>Prueba</span>
+                            <span>Cosecha</span>
                         </a>
                        
                     </li>
@@ -101,7 +95,7 @@
                             Sistema de trazabilidad de alimentos
                         </div>
                         <div id="contenido" class="card-body">
-                          
+                            @yield('contentCosecha')
                             @yield('presentacion')
                             @yield('content')
                             @yield('codigo')

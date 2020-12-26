@@ -25,4 +25,8 @@ Route::get('/intro', function(){
 
 Route::get('/vina', 'VinaController@index')->name('vina');
 
+Route::get('/cosecha', 'CosechaController@index')->name('cosecha');
+
 Route::post('/prueba', 'VinaController@generar')->name('prueba');
+
+Route::post('/generarCosecha', 'CosechaController@generar')->name('cosecha_generate');
