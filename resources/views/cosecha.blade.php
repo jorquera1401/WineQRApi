@@ -3,7 +3,7 @@
 
 <div class="container col-md-8 col-md-offset-2">
     <div class="panel-heading">
-        <h2>Viñas</h2>
+        <h2>Proceso</h2>
     </div>
 @if (!$cosechas)
     <div> No existen registros de cosecha</div>

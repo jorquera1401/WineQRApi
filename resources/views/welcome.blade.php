@@ -91,9 +91,7 @@
                         <h1 class="h3 mb-0 text-gray-800">Sistema de Trazabilidad</h1> 
                     </nav>
                     <div class="container-fluid">
-                        <div class="title m-b-md">
-                            Sistema de trazabilidad de alimentos
-                        </div>
+                      
                         <div id="contenido" class="card-body">
                             @yield('contentCosecha')
                             @yield('presentacion')
