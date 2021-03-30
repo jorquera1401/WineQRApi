@@ -35,27 +35,18 @@
                 <!-- Sidebar -->
                 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         
-                    <!-- Sidebar - Brand -->
+             
                     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                         <div class="sidebar-brand-icon rotate-n-15">
                             <i class="fas fa-wine-bottle"></i>
                         </div>
                         <div class="sidebar-brand-text mx-3">Trazabilidad de Vino</div>
                     </a>
-        
-                    <!-- Divider -->
                     <hr class="sidebar-divider my-0">
-        
-        
-                    <!-- Divider -->
                     <hr class="sidebar-divider">
-        
-                    <!-- Heading -->
                     <div class="sidebar-heading">
                         Administracion
                     </div>
-        
-                    <!-- Nav Item - Pages Collapse Menu -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('vina') }}">
                             <i class="fas fa-fw fa-cog"></i>
@@ -63,13 +54,18 @@
                         </a> 
                     </li>
         
-                    <!-- Nav Item - Utilities Collapse Menu -->
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="{{route('cosecha')}}"  aria-controls="collapseUtilities">
                             <i class="fas fa-fw fa-wrench"></i>
                             <span>Cosecha</span>
+                        </a>   
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="{{route('carga')}}" aria-controls="collapseUtilities">
+                            <i class="fas fa-fw fa-cash-register"></i>
+                            <span>Carga</span>
                         </a>
-                       
                     </li>
 
                       <!-- Nav Item - Tables -->
@@ -91,11 +87,12 @@
                         <h1 class="h3 mb-0 text-gray-800">Sistema de Trazabilidad</h1> 
                     </nav>
                     <div class="container-fluid">
-                      
                         <div id="contenido" class="card-body">
                             @yield('contentCosecha')
+                            @yield('Carga')
+
                             @yield('presentacion')
-                            @yield('content')
+                            @yield('contentVina')
                             @yield('codigo')
                         </div>
                     </div>

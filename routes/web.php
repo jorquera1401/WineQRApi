@@ -26,7 +26,10 @@ Route::get('/intro', function(){
 Route::get('/vina', 'VinaController@index')->name('vina');
 
 Route::get('/cosecha', 'CosechaController@index')->name('cosecha');
+Route::get('/carga','CargaController@index')->name('carga');
 
 Route::post('/prueba', 'VinaController@generar')->name('prueba');
 
 Route::post('/generarCosecha', 'CosechaController@generar')->name('cosecha_generate');
+
+Route::post('/generarCarga','CargaController@generar')->name('carga_generate');

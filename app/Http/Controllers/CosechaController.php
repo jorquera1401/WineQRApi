@@ -19,7 +19,7 @@ class CosechaController extends Controller
     }
 
     public function generar(Request $request){
-        $cosecha = $request->input('nombre');
+        $cosecha = $request->input('cosecha_item');
         return view('codigoQr', array('codigo'=>$cosecha, 'tipo'=>'cosecha'));
     }
 

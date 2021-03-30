@@ -13,7 +13,13 @@ class CargaController extends Controller
      */
     public function index()
     {
-        //
+        $carga = Carga::all();
+        return view('carga')->with('cargas',$carga);
+    }
+
+    public function generar(Request $request){
+        $carga = $request->input('carga_item');
+        return view('codigoQr',array('codigo'=>$carga,'tipo'=>'carga'));
     }
 
     /**
@@ -38,6 +44,8 @@ class CargaController extends Controller
         $carga->fecha = $request->fecha;
         $carga->peso = $request->peso;
         $carga->descripcion = $request->descripcion;
+        $carga->hash_entrada = $request->hash_entrada;
+        $carga->hash_salida = $request->hash_salida;
         $carga->save();
     }
 
@@ -49,7 +57,7 @@ class CargaController extends Controller
      */
     public function show($id)
     {
-        return Carga::where('id', $id)->get();
+        return Carga::where('hash_salida', $id)->get();
     }
 
     /**

@@ -20,7 +20,7 @@ class CreateTableCosecha extends Migration
             $table->float('humedad');
             $table->string('descripcion');
             $table->integer('hash_entrada');
-            $tablse->string('hash_salida');
+            $table->string('hash_salida')->unique();
             $table->timestamps();
       //      $table->foreign('predio_id')->references('id')->on('predio');
         });

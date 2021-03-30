@@ -18,6 +18,8 @@ class CreateTableCarga extends Migration
             $table->dateTime('fecha');
             $table->float('peso');
             $table->string('descripcion');
+            $table->string('hash_entrada');
+            $table->string('hash_salida')->unique();
             $table->timestamps();
         //    $table->foreign('cosecha_id')->references('id')->on('cosecha');
         });

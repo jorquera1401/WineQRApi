@@ -1,5 +1,5 @@
  @extends('welcome')
- @section('content')
+ @section('contentVina')
 
 
     <div class="container col-md-8 col-md-offset-2">
@@ -14,7 +14,7 @@
             @csrf 
         <select name="nombre">
         @foreach ($vinas as $item)
-            <option  value="{{$item->hash}}">{{$item->nombre}}"</option>
+            <option  value="{{$item->hash}}">{{$item->nombre}}</option>
         @endforeach
         </select>
         <input type="submit" value="Generar"/>
@@ -24,13 +24,17 @@
             <tr>
             <th>Item</th>
             <th>Nombre</th>
-            <th>Codigo</th>
+            <th>Codigo</th> 
+            <th>Creado</th>
+            <th></th>
             <tr>
             @foreach ($vinas as $item)
             <tr>
                 <td></td>
                 <td>{{$item->nombre}}</td>
                 <td><a href="{{route('prueba')}}">{{$item->hash}}</a></td>
+                <td>{{$item->created_at}}</td>
+                <td><button>eliminar</button>
             </tr> 
             @endforeach
 

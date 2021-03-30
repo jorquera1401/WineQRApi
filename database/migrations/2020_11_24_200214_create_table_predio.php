@@ -19,7 +19,7 @@ class CreateTablePredio extends Migration
             $table->string('locacion');
             $table->string('tipo');
             $table->string('descripcion');
-            $table->integer('hash')->unique();
+            $table->string('hash')->unique();
            /* $table->unsignedInteger('id_vina')->null();
             $table->foreign('id_vina')->references('id')->on('vina')->onDelete('cascade');
             */

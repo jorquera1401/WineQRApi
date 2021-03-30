@@ -11,9 +11,9 @@
     <h1>Cosechas</h1>
     <form method="POST" action="{{route('cosecha_generate')}}">
         @csrf 
-    <select name="nombre">
+    <select name="cosecha_item">
     @foreach ($cosechas as $item)
-        <option  value="{{$item->hash_salida}}">{{$item->fecha}} {{$item->hash_entrada}}"</option>
+        <option  value="{{$item->hash_salida}}">{{$item->fecha}} {{$item->hash_entrada}}</option>
     @endforeach
     </select>
     <input type="submit" value="Generar"/>
