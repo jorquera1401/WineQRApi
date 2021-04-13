@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Descarga extends Model
 {
     protected $table='descarga';
-    protected $fillname = ['fecha', 'descripcion'];
+    protected $fillname = ['fecha', 'descripcion','distancia'];
 }

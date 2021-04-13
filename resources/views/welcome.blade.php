@@ -93,8 +93,13 @@
 
                             @yield('presentacion')
                             @yield('contentVina')
-                            @yield('codigo')
+                            
                         </div>
+
+                                                    
+                            <div id="cuerpo" class="card-body">
+                                @yield('codigo')
+                            </div>
                     </div>
                 </div>
             </div>

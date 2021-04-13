@@ -39,6 +39,8 @@ class BodegaController extends Controller
         $bodega->temperatura = $request->temperatura;
         $bodega->humedad = $request->humedad;
         $bodega->descripcion = $request->descripcion;
+
+        $bodega->save();
     }
 
     /**

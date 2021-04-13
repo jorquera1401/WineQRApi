@@ -17,6 +17,8 @@ class CreateTableAlmacen extends Migration
             $table->increments('id');
             $table->dateTime('fecha');
             $table->string('descripcion');
+            $table->float('temperatura');
+            $table->float('humedad');
             $table->timestamps();
       //      $table->foreign('descarga_id')->references('id')->on('descarga');
 

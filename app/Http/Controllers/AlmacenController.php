@@ -36,8 +36,11 @@ class AlmacenController extends Controller
     public function store(Request $request)
     {
         $almacen = new Almacen;
+        $almacen->temperatura = $request->temperatura;
+        $almacen->humedad = $request->humedad;
         $almacen->fecha =$request->fecha;
         $almacen->descripcion=$request->descripcion;
+        $almacen->save();
     }
 
     /**

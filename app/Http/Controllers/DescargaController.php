@@ -37,6 +37,7 @@ class DescargaController extends Controller
         $descarga = new Descarga;
         $descarga->fecha = $request->fecha;
         $descarga->descripcion = $request->descripcion;
+        $descarga->distancia = $request->distancia;
         $descarga->save();
     }
 
