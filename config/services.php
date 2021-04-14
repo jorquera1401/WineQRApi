@@ -13,6 +13,13 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'sparkpost'=>[
+        'secret'=> 'abcdefg',
+    ],
+
+    'bugsnag'=>[
+        'key'=> env('BUGSNAG_API_KEY'),
+    ],
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),

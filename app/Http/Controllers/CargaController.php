@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Carga;
+use App\Models\Carga;
+
 class CargaController extends Controller
 {
     /**

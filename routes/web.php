@@ -33,3 +33,7 @@ Route::post('/prueba', 'VinaController@generar')->name('prueba');
 Route::post('/generarCosecha', 'CosechaController@generar')->name('cosecha_generate');
 
 Route::post('/generarCarga','CargaController@generar')->name('carga_generate');
+
+
+//livewire
+ 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Descarga;
+use App\Models\Descarga;
 class DescargaController extends Controller
 {
     /**

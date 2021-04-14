@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Predio;
+use  App\Models\Predio;
 
 class PredioController extends Controller
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cosecha;
+use App\Models\Cosecha;
 
 class CosechaController extends Controller
 {

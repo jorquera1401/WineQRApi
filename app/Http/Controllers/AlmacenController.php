@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Almacen;
 
+use App\Models\Almacen;
 class AlmacenController extends Controller
 {
     /**
