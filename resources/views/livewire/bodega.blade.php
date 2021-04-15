@@ -48,6 +48,65 @@
             <p>Cantidad de Datos: {{$totalB}}</p>
         </div>
     </div>
+
+    <div>
+        <h4>Gráfico</h4>
+        <canvas id="pie-chart"></canvas>
+    </div>
+
+    <script>
+        $(function(){
+            var cData = JSON.parse('<?php echo $data;?>');
+            var ctx= $("#pie-chart");
+
+             var data = {
+                 labels: cData.label,
+                 datasets:[
+                    {
+                        label:  "Temperatura",
+                        data: cData.data,
+                        backgroundColor:[
+                            
+                            "#CDA776",
+
+                        ],
+                        borderColor:[
+                            "#CB252B",
+                        ],
+                        borderWidth : [1,1,1,1,1,1,1]
+                    }
+
+                 ]
+             };
+            
+             var options = {
+                 responsive : true,
+                 title:{
+                     display:true,
+                     position:"top",
+                     text:"Registros de Temperatura - Bodega",
+                     fontSize:18,
+                     fontColor:"#111"
+                 },
+                 legend:{
+                     display : true,
+                     position:"bottom",
+                     labels:{
+                         fontColor:"#333",
+                         fontSize:16
+                     }
+                 }
+             };
+
+             var grafico_temperatura = new Chart(ctx,{
+                 type:"line",
+                 data:data,
+                 options:options
+             });
+
+        })
+
+    </script>
     
     @include('livewire.almacen')
 

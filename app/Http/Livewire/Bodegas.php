@@ -14,7 +14,7 @@ class Bodegas extends Component{
     public $tPromedioA,$hPromedioA;
     public $tPromedioB, $hPromedioB, $totalB, $tMaxB, $hMaxB, $tMinB, $hMinB;
 
-
+    public $data;
     public $verDetalle = false;
    
     public function render()
@@ -25,6 +25,7 @@ class Bodegas extends Component{
         $this->bodegas = Bodega::all();
         
         $this->calcularEstadisticaBodega();
+        $this->verData();
 
         return view('livewire.bodega');
     }
@@ -54,6 +55,21 @@ class Bodegas extends Component{
 
     public function cerrar(){
         $this->verDetalle=false;
+    }
+
+    public function verData(){
+        $bodega = Bodega::all();
+
+        $data = [];
+
+        foreach($bodega as $fila){
+            $data['label'][]=$fila->fecha;
+            $data['data'][]=(float) $fila->temperatura;
+
+        }
+        $this->data= json_encode($data);
+
+
     }
 
 }

@@ -26,6 +26,14 @@ class BodegaController extends Controller
         //
     }
 
+    public function visualizarDatos(){
+        $bodega = Bodega::all();
+        $data['temperatura']= $bodega->temperatura;
+        $data['humedad']=$bodega->humedad;
+        $data['fecha']=$bodega->fecha;
+        return json_encode($data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

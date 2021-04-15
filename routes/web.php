@@ -36,5 +36,7 @@ Route::post('/generarCarga','CargaController@generar')->name('carga_generate');
 
 Route::get('/tablas','BodegaController@index')->name('tablas');
 
+
+
 //livewire
  
