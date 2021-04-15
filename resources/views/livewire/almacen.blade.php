@@ -1,9 +1,9 @@
 <div>
 
     <h1>Datos Almacen</h1>
-    <table class="table-auto w-full">
+    <table class="table-auto w-full bg-primary text-white">
         <thead>
-            <tr class="bg-gray-200">
+            <tr class="bg-gray-200 text-primary">
                 <th class="px-4 py-2">||</th>
                 <th class="px-4 py-2">Temperatura</th>
                 <th class="px-4 py-2">Humedad</th>
@@ -33,7 +33,7 @@
     </table>
 
     <div>
-        <p>Maxima temperatura Almacen: {{$temperaturaPromedioA}}</p> 
+ 
     </div>
 
 </div>

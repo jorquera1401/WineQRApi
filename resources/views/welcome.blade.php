@@ -70,9 +70,9 @@
 
                       <!-- Nav Item - Tables -->
                       <li class="nav-item">
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="{{route('tablas')}}">
                             <i class="fas fa-fw fa-table"></i>
-                            <span>Tables</span></a>
+                            <span>Tablas</span></a>
                     </li>
         
                    
@@ -90,6 +90,7 @@
                         <div id="contenido" class="card-body">
                             @yield('contentCosecha')
                             @yield('Carga')
+                            @yield('Bodega')
 
                             @yield('presentacion')
                             @yield('contentVina')

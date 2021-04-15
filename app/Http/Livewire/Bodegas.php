@@ -7,10 +7,15 @@ use App\Models\Bodega;
 use App\Models\Almacen;
 class Bodegas extends Component{
 
-    public $bodegas, $temperatura, $humedad, $descripcion, $fecha;
-    public $almacenData, $temperaturaA, $humedadA;
-    public $temperaturaPromedioA,$humedadPromedioA;
-    public $updateMode = false;
+    public $bodegas;
+    public $almacenData;
+    public $temperaturaB, $humedadB, $fechaB;
+    
+    public $tPromedioA,$hPromedioA;
+    public $tPromedioB, $hPromedioB, $totalB, $tMaxB, $hMaxB, $tMinB, $hMinB;
+
+
+    public $verDetalle = false;
    
     public function render()
     {
@@ -18,7 +23,37 @@ class Bodegas extends Component{
         $this->almacenData =Almacen::all();
         $this->temperaturaPromedioA = $this->temperaturaPromedioA/count($this->almacenData);
         $this->bodegas = Bodega::all();
+        
+        $this->calcularEstadisticaBodega();
+
         return view('livewire.bodega');
+    }
+
+    private function calcularEstadisticaBodega(){
+
+        $datosBodega = Bodega::sum('temperatura');
+        $filas = Bodega::all();
+        $this->tPromedioB = $datosBodega / count($filas);
+        $datosBodega = Bodega::sum('humedad');
+        $this->hPromedioB = $datosBodega/ count($filas);
+        $this->totalB = count($filas);
+        $this->tMaxB = collect($filas)->max('temperatura');
+        $this->tMinB = collect($filas)->min('temperatura');
+        $this->hMaxB = collect($filas)->max('humedad');
+        $this->hMinB = collect($filas)->min('humedad');
+
+    }
+
+    public function visualizar($id){
+        $record = Bodega::findOrFail($id);
+        $this->verDetalle = true;
+        $this->temperaturaB = $record->temperatura;
+        $this->humedadB = $record->humedad;
+        $this->fechaB  =$record->fecha;
+    }
+
+    public function cerrar(){
+        $this->verDetalle=false;
     }
 
 }

@@ -60,7 +60,8 @@ class VinaController extends Controller
      */
     public function show($id)
     {
-        return  Vina::where('hash', $id)->get();
+        return  Vina::where('hash','like', '%'.$id)->get();
+
     }
 
 
