@@ -14,9 +14,13 @@ class Bodegas extends Component{
     public $tPromedioA,$hPromedioA;
     public $tPromedioB, $hPromedioB, $totalB, $tMaxB, $hMaxB, $tMinB, $hMinB;
 
-    public $data;
+    public $dataBodega;
+    public $dataAlmacen;
     public $verDetalle = false;
    
+    /**
+     * Se ve en en el navegador
+     */
     public function render()
     {
         $this->temperaturaPromedioA = Almacen::sum('humedad');
@@ -29,7 +33,9 @@ class Bodegas extends Component{
 
         return view('livewire.bodega');
     }
-
+    /**
+     * Calcula datos estadisticos en el dataset de Bodega
+     */
     private function calcularEstadisticaBodega(){
 
         $datosBodega = Bodega::sum('temperatura');
@@ -45,6 +51,9 @@ class Bodegas extends Component{
 
     }
 
+    /**
+     * Visualizar el detalle de una fila de bodega
+     */
     public function visualizar($id){
         $record = Bodega::findOrFail($id);
         $this->verDetalle = true;
@@ -52,24 +61,39 @@ class Bodegas extends Component{
         $this->humedadB = $record->humedad;
         $this->fechaB  =$record->fecha;
     }
-
+    /**
+     * Cierra la ventana de detalle 
+     */
     public function cerrar(){
         $this->verDetalle=false;
     }
 
+    /**
+     * Carga los datos de Bodega y Almacen en un dataset para poder ser visto en gráficos en el navegador
+     */
     public function verData(){
         $bodega = Bodega::all();
-
+        $almacen = Almacen::all();
         $data = [];
 
         foreach($bodega as $fila){
-            $data['label'][]=$fila->fecha;
+            $data['label'][]= substr($fila->fecha,11);
+            $data['fecha'][]=substr($fila->fecha,0,11);
             $data['data'][]=(float) $fila->temperatura;
-
+            $data['humedad'][]=(float) $fila->humedad;
         }
-        $this->data= json_encode($data);
-
+        $this->dataBodega= json_encode($data);
+        
+        $data =[];
+        foreach($almacen as $fila){
+            $data['label'][]=substr($fila->fecha,11);
+            $data['fecha'][]=substr($fila->fecha,0,11);
+            $data['temperaturaData'][]=(float) $fila->temperatura;
+            $data['humedadData'][]=(float) $fila->humedad;
+        }
+        $this->dataAlmacen = json_encode($data);
 
     }
+ 
 
 }

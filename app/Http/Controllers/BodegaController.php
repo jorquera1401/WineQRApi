@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bodega;
+use PHPUnit\Util\Json;
+
 class BodegaController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +18,25 @@ class BodegaController extends Controller
     public function index()
     {
         return view('bodega');
+    }
+
+    public function cargarGrafico(){
+        return view('livewire.graficos');
+    }
+
+    /**
+     * funcion que devuelve todos los datos de bodega
+     */
+    public function cargar(){
+        $bodega = Bodega::all();
+        $data = [];
+        foreach($bodega as $item){
+            $data['temperatura'][]=  $item->temperatura;
+            $data['humedad'][]=$item->humedad;
+            $data['fecha'][]=substr($item->fecha,0,11);
+            $data['hora'][]=substr($item->fecha,11);
+        }
+        return json_encode($data);
     }
 
     /**

@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Ruta para ver datos de viña
 Route::resource('vina', 'VinaController');
 
+
 Route::resource('predio', 'PredioController');
 
 Route::resource('cosecha', 'CosechaController');
@@ -30,4 +31,13 @@ Route::resource('descarga', 'DescargaController');
 
 Route::resource('almacen', 'AlmacenController');
 
-Route::resource('bodega', 'BodegaController');
+Route::resource('bodega', 'BodegaController',
+    ['only'=>['index','show','store','cargar']]);
+
+
+Route::resource('bodega', 'BodegaController',
+    ['except'=>['create','update','destroy','edit']]);
+
+Route::get('bodega', 'BodegaController@cargar');
+
+Route::get('almacen','AlmacenController@cargar');

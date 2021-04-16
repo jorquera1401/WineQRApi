@@ -17,6 +17,20 @@ class AlmacenController extends Controller
         //
     }
 
+     /**
+     * funcion que devuelve todos los datos de bodega
+     */
+    public function cargar(){
+        $bodega = Almacen::all();
+        $data = [];
+        foreach($bodega as $item){
+            $data['temperatura'][]=  $item->temperatura;
+            $data['humedad'][]=$item->humedad;
+            $data['fecha'][]=substr($item->fecha,0,11);
+            $data['hora'][]=substr($item->fecha,11);
+        }
+        return json_encode($data);
+    }
     /**
      * Show the form for creating a new resource.
      *

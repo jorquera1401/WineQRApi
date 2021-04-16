@@ -3,6 +3,7 @@
     @if($verDetalle)
         @include('livewire.detalleBodega')
     @endif
+
     <div class="row">
         <table class="table-auto w-full col-12 col-sm-6 col-md-8">
             <thead>
@@ -25,7 +26,7 @@
                         <td class="border px-4 py-2">{{substr($item->fecha,0,11)}}</td>
                         <td class="border px-4 py-2">{{substr($item->fecha,11)}}</td>  
                         <td class="border px-4 py-2">
-                            <button wire:click="visualizar({{$item->id}})" class="px-2 py-1 bg-blue-200 text-blue-500 hover:bg-blue-500 hover:text-white rounded">Editar</button>
+                            <button wire:click="visualizar({{$item->id}})" class="px-2 button py-1 bg-blue-200 text-blue-500 hover:bg-blue-500 hover:text-white rounded">Ver</button>
                         </td>
                     </tr>
                 @empty
@@ -50,64 +51,9 @@
     </div>
 
     <div>
-        <h4>Gráfico</h4>
-        <canvas id="pie-chart"></canvas>
+        @include('livewire.graficos')
     </div>
 
-    <script>
-        $(function(){
-            var cData = JSON.parse('<?php echo $data;?>');
-            var ctx= $("#pie-chart");
-
-             var data = {
-                 labels: cData.label,
-                 datasets:[
-                    {
-                        label:  "Temperatura",
-                        data: cData.data,
-                        backgroundColor:[
-                            
-                            "#CDA776",
-
-                        ],
-                        borderColor:[
-                            "#CB252B",
-                        ],
-                        borderWidth : [1,1,1,1,1,1,1]
-                    }
-
-                 ]
-             };
-            
-             var options = {
-                 responsive : true,
-                 title:{
-                     display:true,
-                     position:"top",
-                     text:"Registros de Temperatura - Bodega",
-                     fontSize:18,
-                     fontColor:"#111"
-                 },
-                 legend:{
-                     display : true,
-                     position:"bottom",
-                     labels:{
-                         fontColor:"#333",
-                         fontSize:16
-                     }
-                 }
-             };
-
-             var grafico_temperatura = new Chart(ctx,{
-                 type:"line",
-                 data:data,
-                 options:options
-             });
-
-        })
-
-    </script>
-    
     @include('livewire.almacen')
 
 </div>
