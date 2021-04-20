@@ -1,11 +1,11 @@
-<div class="container">
+<div >
     <h1>Datos Bodega</h1>
     @if($verDetalle)
         @include('livewire.detalleBodega')
     @endif
 
-    <div class="row">
-        <table class="table-auto w-full col-12 col-sm-6 col-md-8">
+    <div class="row ">
+        <table id="tabla_bodega" class="table table-hover table-condensed">
             <thead>
                 <tr class="bg-gray-200">
                     <th class="px-4 py-2">#</th>
@@ -16,27 +16,11 @@
                     <th class="px-4 py-2">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-                @forelse($bodegas as $item)
-               
-                    <tr class="text-center">
-                        <td class="border px-4 py-2">{{$item->id}}</td>
-                        <td class="border px-4 py-2">{{$item->temperatura}}</td>
-                        <td class="border px-4 py-2">{{$item->humedad}}</td>
-                        <td class="border px-4 py-2">{{substr($item->fecha,0,11)}}</td>
-                        <td class="border px-4 py-2">{{substr($item->fecha,11)}}</td>  
-                        <td class="border px-4 py-2">
-                            <button wire:click="visualizar({{$item->id}})" class="px-2 button py-1 bg-blue-200 text-blue-500 hover:bg-blue-500 hover:text-white rounded">Ver</button>
-                        </td>
-                    </tr>
-                @empty
-                    <tr class="text-center">
-                        <td colspan="4" class="py-3 italic">No Hay Datos de Bodega</td>
-                    </tr>
-                    
-                @endforelse
-            </tbody>
         </table>
+  
+       
+    </div>
+    <div class="row container">
         <div class="col-6 col-md-4 bg-primary text-white">
             <h3>Resumen</h3>
             <p>Temperatura Promedio: {{$tPromedioB}}°C</p>
@@ -51,8 +35,45 @@
     </div>
 
     <div>
-        @include('livewire.graficos')
+ 
     </div>
+
+    <script>
+        var datosBodega= JSON.parse('<?php echo $dataBodega ?>');
+        var detalleAlmacen;
+        $(document).ready(function(){
+            
+            console.log("Bodega: ",datosBodega);
+        })
+
+        
+
+        $("#tabla_bodega").DataTable({
+            data: datosBodega, 
+            responsive:true,
+            columns:[
+                
+                {data:"id"},
+                {data:"temperatura"},
+                {data:"humedad"},
+                {data:"fecha"},
+                {data:"hora"},
+                {
+                    data : null,
+                    render:function(data,type,fila,meta){
+                         return '<button class="btn btn-success verBodega" data-id='+fila.id+'>Ver</button>';
+                    }
+                }
+            ],
+            "fnDrawCallback":function(){
+                $(".verBodega").unbind("click").click(function(){
+                    let id = $(this).data("id");
+                    console.log(id);
+            
+                });
+            }
+        });
+    </script>
 
     @include('livewire.almacen')
 

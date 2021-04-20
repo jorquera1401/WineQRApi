@@ -10,6 +10,7 @@ class Bodegas extends Component{
     public $bodegas;
     public $almacenData;
     public $temperaturaB, $humedadB, $fechaB;
+    public $datosAlmacen;
     
     public $tPromedioA,$hPromedioA;
     public $tPromedioB, $hPromedioB, $totalB, $tMaxB, $hMaxB, $tMinB, $hMinB;
@@ -17,7 +18,7 @@ class Bodegas extends Component{
     public $dataBodega;
     public $dataAlmacen;
     public $verDetalle = false;
-   
+    
     /**
      * Se ve en en el navegador
      */
@@ -61,6 +62,17 @@ class Bodegas extends Component{
         $this->humedadB = $record->humedad;
         $this->fechaB  =$record->fecha;
     }
+
+    public function visualizarAlmacen($id){
+        $record = Almacen::findOrFail($id);
+        $data['id']=$record->id;
+        $data['temperatura']=$record->temperatura;
+        $data['humedad']=$record->humedad;
+        $data['fecha']=substr($record->fecha,0,11);
+        $data['hora']=substr($record->fecha,11);
+        return json_encode($data);
+
+    }
     /**
      * Cierra la ventana de detalle 
      */
@@ -68,30 +80,39 @@ class Bodegas extends Component{
         $this->verDetalle=false;
     }
 
+
     /**
      * Carga los datos de Bodega y Almacen en un dataset para poder ser visto en gráficos en el navegador
      */
     public function verData(){
         $bodega = Bodega::all();
         $almacen = Almacen::all();
-        $data = [];
+        $this->datosModelo = Almacen::all();
 
+        $data = [];
+        $object= [];
         foreach($bodega as $fila){
-            $data['label'][]= substr($fila->fecha,11);
-            $data['fecha'][]=substr($fila->fecha,0,11);
-            $data['data'][]=(float) $fila->temperatura;
-            $data['humedad'][]=(float) $fila->humedad;
+            $data['id']=$fila->id;
+            $data['hora']= substr($fila->fecha,11);
+            $data['fecha']=substr($fila->fecha,0,11);
+            $data['temperatura']=(float) $fila->temperatura;
+            $data['humedad']=(float) $fila->humedad;
+            $object[]=$data;
         }
-        $this->dataBodega= json_encode($data);
+        $this->dataBodega= json_encode($object);
         
         $data =[];
+        $object  =[];
         foreach($almacen as $fila){
-            $data['label'][]=substr($fila->fecha,11);
-            $data['fecha'][]=substr($fila->fecha,0,11);
-            $data['temperaturaData'][]=(float) $fila->temperatura;
-            $data['humedadData'][]=(float) $fila->humedad;
+            $data['id']=$fila->id;
+            $data['hora']=substr($fila->fecha,11);
+            $data['fecha']=substr($fila->fecha,0,11);
+            $data['temperatura']=(float) $fila->temperatura;
+            $data['humedad']=(float) $fila->humedad;
+      
+            $object[]=$data;
         }
-        $this->dataAlmacen = json_encode($data);
+        $this->dataAlmacen = json_encode($object);
 
     }
  

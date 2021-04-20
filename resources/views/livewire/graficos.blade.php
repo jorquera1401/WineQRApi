@@ -3,7 +3,7 @@
     <h4>Gráfico</h4>
     <canvas id="pie-chart"></canvas>
     <canvas id="almacen-chart"></canvas>
-    
+    <h2>Graficos de ventana</h2>    
     <script>
 
         function graficoAlmacen(cData,canvas){
@@ -116,7 +116,7 @@
 
         }
         $(function(){
-            var cData = JSON.parse('<?php echo $dataBodega;?>');
+            var cData = JSON.parse('<?php echo $dataBodega ?? '';?>');
             var cDataAlmacen = JSON.parse('<?php echo $dataAlmacen;?>');
             console.log(cDataAlmacen);
             var ctx= $("#pie-chart");
@@ -124,7 +124,7 @@
             
             graficoBodega(cData,ctx);
             graficoAlmacen(cDataAlmacen,cti);
-
+ 
              
         });
     </script>

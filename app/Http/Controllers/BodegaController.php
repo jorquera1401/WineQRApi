@@ -17,11 +17,13 @@ class BodegaController extends Controller
      */
     public function index()
     {
-        return view('bodega');
+        $tabla  =true;
+        return view('bodega')->with('tabla',$tabla);
     }
 
     public function cargarGrafico(){
-        return view('livewire.graficos');
+        $tabla = false;
+        return view('bodega')->with('tabla',$tabla);
     }
 
     /**
