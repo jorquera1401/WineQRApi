@@ -3,7 +3,7 @@
 
 <div class="container col-md-8 col-md-offset-2">
     <div class="panel-heading">
-        <h2>Seccion de Carga</h2>
+        <h2>Gestion de Cargas de Fruta</h2>
     </div>
 
 @if (!$cargas)
@@ -11,7 +11,7 @@
 @else 
     <h1>Carga</h1>
 
-    <form method="POST" action="{{route('carga_generate')}}">
+    {{--  <form method="POST" action="{{route('carga_generate')}}">
         @csrf
         <select name="carga_item">
             @foreach($cargas as $item)
@@ -19,7 +19,7 @@
             @endforeach
         </select>
         <input type="submit" value="Generar"/>
-    </form>
+    </form>  --}}
 
 
     

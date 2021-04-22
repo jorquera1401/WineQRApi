@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carga;
+use App\Models\Vina;
+
+
 
 class CargaController extends Controller
 {
@@ -19,8 +22,12 @@ class CargaController extends Controller
     }
 
     public function generar(Request $request){
-        $carga = $request->input('carga_item');
-        return view('codigoQr',array('codigo'=>$carga,'tipo'=>'carga'));
+        
+        $codigo = $request->input('carga_item');
+        $carga = substr($codigo,0,4);
+        $vina =  Vina::where('hash','like',$carga)->first();
+         
+        return view('codigoQr',array('codigo'=>$codigo,'tipo'=>'carga','cargaT'=>$vina));
     }
 
     /**

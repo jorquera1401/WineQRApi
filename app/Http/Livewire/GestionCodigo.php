@@ -9,13 +9,18 @@ class GestionCodigo extends Component
 {
     public $cargaData;
     public $hola;
+    public $totalPeso, $promedioPeso;
+    public $primeraCaptura, $ultimaCaptura;
     public function render()
     {
         $this->verCargas();
-
+        $this->verEstadistica();
         return view('livewire.gestion-codigo');
     }
 
+    /**
+     * Carga los datos de la tabla para visualizar el administrador
+     */
     public function verCargas(){
 
         $filas  = Carga::all();
@@ -30,5 +35,20 @@ class GestionCodigo extends Component
             $objeto[]= $data;
         }
         $this->cargaData=json_encode($objeto);
+    }
+
+    /**
+     * Carga las estadisticas para visualizar en el resumen
+     */
+    public function verEstadistica(){
+        $carga = Carga::all();
+        $primero= Carga::oldest()->first();
+        $ultimo = Carga::latest()->first();
+        $this->primeraCaptura = $primero->fecha;
+        $this->ultimaCaptura = $ultimo->fecha;
+        $this->totalPeso = (float) collect($carga)->sum('peso');
+        $this->promedioPeso = (float)  collect($carga)->avg('peso');
+
+
     }
 }

@@ -2,13 +2,16 @@
 @extends('welcome')
 @section("codigo")
 <div class="container col-md-8 col-md-offset-2">
+
+@if($codigo)
     <h1> Proceso :  {{$tipo}} <a href="{{$codigo}}" target="_blank">{{$codigo}}</a></h1>
-    <div id="codigoQR" class="title m-b-md">
+    <div id="codigoQR" style="width:300px" class="title container m-b-md" >
 
         {!!QrCode::size(300)->generate($codigo)!!}
-        <p>Hola mundo</p>
+        <p class="d-flex ">{{$cargaT->nombre}} - {{$cargaT->direccion}}</p>
+
     </div> 
-    <button class="button" onclick="imprimir('codigoQR')">Imprimir</button>
+    <button class="btn btn-primary" onclick="imprimir('codigoQR')">Imprimir</button>
 
     <script>
         function imprimir(imagen){
@@ -21,10 +24,13 @@
             document.body.innerHTML = contenidoOriginal;
         
         }
+   
     </script>
+ 
+@else
+<h1>No existe Codigo</h1>
+@endif
 </div>
-
-
 @if ($tipo == 'vina')
     <a href="{{route('vina')}}">Volver</a>
 @elseif ($tipo == 'cosecha')

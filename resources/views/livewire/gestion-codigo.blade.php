@@ -18,16 +18,59 @@
     
     @endif
 
-    <form method="POST" action="{{route('carga_generate')}}">
-        @csrf
-        <input type="label" id="fechaCarga" placeholder="Fecha De Captura"/>
-        <input type="label" id="horaCarga" placeholder="Hora de Captura"/>
-        <input type="label" id="pesoCarga" placeholder="Peso de Captura"/>
-        <input type="label" id="hash_salida" name="carga_item" placeholder="Codigo"/>
-        <input type="submit" value="Generar Codigo"/>
-    </form>
+   
+
+    
+
+    <div id="mymodal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Detalle Carga</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form method="POST" action="{{route('carga_generate')}}">
+        <div class="modal-body container">
+                @csrf
+                <div class="form-group row">
+                    <label for="fechaCarga" class="col-sm col-form-label">Fecha de Captura</label>
+                    <input readonly type="date" id="fechaCarga" class="col-sm" placeholder="Fecha De Captura"/>
+                </div>
+                <div class="form-group row">
+                    <label for="horaCarga" class="col-form-label col-sm">Hora de Captura</label>
+                    <input readonly type="label" id="horaCarga" class="col-sm" placeholder="Hora de Captura"/>
+                </div>
+                <div class="form-group row">
+                    <label for="pesoCarga" class="col-form-label col-sm">Peso (Kg)</label>
+                    <input readonly type="label" id="pesoCarga" class="col-sm" placeholder="Peso de Captura"/> 
+                
+                </div>
+                <input type="hidden" id="hash_salida" name="carga_item" placeholder="Codigo"/>
+        
+                
+                
+                
+                
+            
+            
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-primary" value="Generar Codigo"/>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+        </div>
+    </div>
+    </div>
 
     <p>Gestor de codigo</p>
+    <p>Primera Fecha : {{substr($primeraCaptura,0,11)}} Hora: {{substr($primeraCaptura,11)}}</p>
+    <p>Ultima Captura:{{substr($ultimaCaptura,0,11)}} Hora : <div class="digital-clock">{{substr($ultimaCaptura,11)}}</div> </p>
+    <p>Promedio Peso {{$promedioPeso}} Kg</p>
+    <p>Total Peso {{$totalPeso}} Kg</p>
+
     <script>
         var dataCarga =  JSON.parse('<?php echo $cargaData; ?>');
            
@@ -62,6 +105,7 @@
                     $("#fechaCarga").val(fecha);
                     $("#hash_salida").val(hash_salida);
                     $("#pesoCarga").val(peso);
+                    $("#mymodal").modal();
                     console.log(id,hash_entrada,hash_salida,peso,hora,fecha);
                 });
             }
