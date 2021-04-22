@@ -4,7 +4,7 @@
         @include('livewire.detalleBodega')
     @endif
 
-    <div class="row ">
+    <div>
         <table id="tabla_bodega" class="table table-hover table-condensed">
             <thead>
                 <tr class="bg-gray-200">
@@ -16,26 +16,33 @@
                     <th class="px-4 py-2">Acciones</th>
                 </tr>
             </thead>
-        </table>
-  
-       
-    </div>
-    <div class="row container">
-        <div class="col-6 col-md-4 bg-primary text-white">
-            <h3>Resumen</h3>
-            <p>Temperatura Promedio: {{$tPromedioB}}°C</p>
-            <p>Temperatura Maxima : {{$tMaxB}}°C</p>
-            <p>Temperatura Minima : {{$tMinB}}°C</p>
-            
-            <p>Humedad Promedio : {{$hPromedioB}}%</p>
-            <p>Humedad Máxima : {{$hMaxB}}%</p>
-            <p>Humedad Minima : {{$hMinB}}%</p>
-            <p>Cantidad de Datos: {{$totalB}}</p>
-        </div>
+        </table>       
     </div>
 
-    <div>
- 
+    <div class="container row text-white">
+        <div class="col-6 col-md-4 bg-primary  ">
+            <h3>Resumen Datos Bodega</h3>
+         
+            <p>Cantidad de Datos: {{$totalB}}</p>
+        </div>
+        <div class="col bg-success">
+            <h3>Promedio</h3>
+            <p>Temperatura Promedio: {{$tPromedioB}}°C</p>
+            <p>Humedad Promedio : {{$hPromedioB}}%</p>
+        </div>
+        <div class="col bg-danger  ">
+            <h3>Máxima</h3>
+            <p>Temperatura Maxima : {{$tMaxB}}°C</p>
+            <p>Humedad Máxima : {{$hMaxB}}%</p>
+            
+        </div>
+        <div class="col bg-secondary ">
+            <h3>Minima</h3>
+            <p>Temperatura Minima : {{$tMinB}}°C</p>    
+            <p>Humedad Minima : {{$hMinB}}%</p>
+        
+        </div>    
+
     </div>
 
     <script>
@@ -77,5 +84,7 @@
 
     @include('livewire.almacen')
 
-</div>
+    @include('livewire.descarga')
+
+</&div>
 

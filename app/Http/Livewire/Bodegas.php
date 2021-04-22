@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Bodega;
 use App\Models\Almacen;
+use App\Models\Descarga;
 class Bodegas extends Component{
 
     public $bodegas;
@@ -12,11 +13,12 @@ class Bodegas extends Component{
     public $temperaturaB, $humedadB, $fechaB;
     public $datosAlmacen;
     
-    public $tPromedioA,$hPromedioA;
     public $tPromedioB, $hPromedioB, $totalB, $tMaxB, $hMaxB, $tMinB, $hMinB;
 
+    public $tPromedioA,$hPromedioA, $totalA, $tMaxA,$hMaxA,$tMinA,$hMinA;
     public $dataBodega;
     public $dataAlmacen;
+    public $dataDescarga;
     public $verDetalle = false;
     
     /**
@@ -30,6 +32,7 @@ class Bodegas extends Component{
         $this->bodegas = Bodega::all();
         
         $this->calcularEstadisticaBodega();
+        $this->calcularEstadisticaAlmacen();
         $this->verData();
 
         return view('livewire.bodega');
@@ -50,6 +53,18 @@ class Bodegas extends Component{
         $this->hMaxB = collect($filas)->max('humedad');
         $this->hMinB = collect($filas)->min('humedad');
 
+    }
+    private function calcularEstadisticaAlmacen(){
+        $datosAlmacen = Almacen::sum('temperatura');
+
+        $filas = Almacen::all();
+        $this->totalA = collect($filas)->count();
+        $this->tPromedioA = collect($filas)->avg('temperatura');
+        $this->hPromedioA = collect($filas)->avg("humedad");
+        $this->tMaxA = collect($filas)->max('temperatura');
+        $this->hMaxA = collect($filas)->max('humedad');
+        $this->tMinA = collect($filas)->min('temperatura');
+        $this->hMinA = collect($filas)->min('humedad');
     }
 
     /**
@@ -87,6 +102,7 @@ class Bodegas extends Component{
     public function verData(){
         $bodega = Bodega::all();
         $almacen = Almacen::all();
+        $descarga = Descarga::all();
         $this->datosModelo = Almacen::all();
 
         $data = [];

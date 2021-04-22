@@ -18,6 +18,33 @@
         </table>
     </div>
 
+    
+    <div class="container row text-white">
+        <div class="col-6 col-md-4 bg-primary  ">
+            <h3>Resumen Datos Bodega</h3>
+         
+            <p>Cantidad de Datos: {{$totalA}}</p>
+        </div>
+        <div class="col bg-success">
+            <h3>Promedio</h3>
+            <p>Temperatura Promedio: {{$tPromedioA}}°C</p>
+            <p>Humedad Promedio : {{$hPromedioA}}%</p>
+        </div>
+        <div class="col bg-danger  ">
+            <h3>Máxima</h3>
+            <p>Temperatura Maxima : {{$tMaxA}}°C</p>
+            <p>Humedad Máxima : {{$hMaxA}}%</p>
+            
+        </div>
+        <div class="col bg-secondary ">
+            <h3>Minima</h3>
+            <p>Temperatura Minima : {{$tMinA}}°C</p>    
+            <p>Humedad Minima : {{$hMinA}}%</p>
+        
+        </div>    
+
+    </div>
+
     <script>
         var datosAlmacen = JSON.parse('<?php echo $dataAlmacen ?>');
         var detalleAlmacen;
@@ -25,9 +52,6 @@
             
         
         })
-
-        
-
         $("#tabla_almacen").DataTable({
             data: datosAlmacen, 
             responsive:true,

@@ -72,7 +72,7 @@
                       <li class="nav-item">
                         <a class="nav-link" href="{{route('tablas')}}">
                             <i class="fas fa-fw fa-table"></i>
-                            <span>Tablas</span></a>
+                            <span>Informes</span></a>
                     </li>
                     
                     <li class="nav-item">

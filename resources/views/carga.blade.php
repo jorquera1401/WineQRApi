@@ -21,10 +21,13 @@
         <input type="submit" value="Generar"/>
     </form>
 
+
+    
+
 @endif
 
 </div>
 
-
+@livewire('gestion-codigo');
 
  @stop
