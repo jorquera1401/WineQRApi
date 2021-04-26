@@ -31,7 +31,15 @@ class BodegaController extends Controller
      */
     public function cargar(){
         $bodega = Bodega::all();
+        $primer = Bodega::oldest()->first();
+        $ultimo = Bodega::latest()->first();
         $data = [];
+        $data['primerRegistro'] = $primer->fecha;
+        $data['ultimoRegistro'] = $ultimo->fecha;
+        $data['total'] = collect($bodega)->count();
+        $data['temperaturaPromedio']= round(collect($bodega)->avg('temperatura'),2);
+        $data['humedadPromedio']=round(collect($bodega)->avg('humedad'),2);
+
         foreach($bodega as $item){
             $data['temperatura'][]=  $item->temperatura;
             $data['humedad'][]=$item->humedad;
