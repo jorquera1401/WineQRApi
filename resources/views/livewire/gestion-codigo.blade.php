@@ -5,16 +5,45 @@
     
     
     @if($cargaData)
-    <table id="tabla_carga" class="table ">
-        <thead>
-            <th>ID</th>
-            <th>FECHA</th>
-            <th>HORA</th>
-            <th>PESO (KG)</th>
-            <th></th>
-        </thead>
-    </table>
+    <div class="card ">
+        <div class="card-header text-center bg-info text-white">
+            Resumen
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <p>Primer Registro Fecha : {{substr($primeraCaptura,0,11)}} Hora: {{substr($primeraCaptura,11)}}</p>
+            </li>
+            <li class="list-group-item">
+                <p>Ultima Registro Fecha:{{substr($ultimaCaptura,0,11)}} Hora : {{substr($ultimaCaptura,11)}} </p>
+            </li>
+            <li class="list-group-item">
+                <p>Peso Promedio: {{$promedioPeso}} Kg</p>
+            </li>
+                
+            <li class="list-group-item">
+                <p>Peso Total:  {{$totalPeso}} Kg</p>
+            </li>
+        </ul>
+
+    </div>
+    <div class="card text-center bg-light">
+        <div class="card-header bg-primary text-white">Datos</div>    
+
+    
+    <div class="card-body">
+        <table id="tabla_carga" class="table ">
+            <thead>
+                <th>ID</th>
+                <th>FECHA</th>
+                <th>HORA</th>
+                <th>PESO (KG)</th>
+                <th></th>
+            </thead>
+        </table>
+    </div>
+    </div>
     @else
+        <div><h1>No Existen Datos de Carga</h1></div>
     
     @endif
 
@@ -22,10 +51,10 @@
 
     
 
-    <div id="mymodal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
+    <div id="mymodal" class="modal " tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content ">
+        <div class="modal-header  text-white bg-secondary">
             <h5 class="modal-title">Detalle Carga</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -65,11 +94,11 @@
     </div>
     </div>
 
-    <p>Gestor de codigo</p>
-    <p>Primera Fecha : {{substr($primeraCaptura,0,11)}} Hora: {{substr($primeraCaptura,11)}}</p>
-    <p>Ultima Captura:{{substr($ultimaCaptura,0,11)}} Hora : <div class="digital-clock">{{substr($ultimaCaptura,11)}}</div> </p>
-    <p>Promedio Peso {{$promedioPeso}} Kg</p>
-    <p>Total Peso {{$totalPeso}} Kg</p>
+    
+ 
+    
+    
+    
 
     <script>
         var dataCarga =  JSON.parse('<?php echo $cargaData; ?>');

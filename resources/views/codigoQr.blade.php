@@ -1,14 +1,14 @@
 
 @extends('welcome')
 @section("codigo")
-<div class="container col-md-8 col-md-offset-2">
+<div class="container  col-md-8 col-md-offset-2">
 
 @if($codigo)
-    <h1> Proceso :  {{$tipo}} <a href="{{$codigo}}" target="_blank">{{$codigo}}</a></h1>
-    <div id="codigoQR" style="width:300px" class="title container m-b-md" >
+    <h1>Código {{$tipo}}: <span class="text-warning">{{$codigo}}</span></h1>
+    <div id="codigoQR" style="width:500px" class="title text-center container bg-danger text-white m-b-md" >
 
         {!!QrCode::size(300)->generate($codigo)!!}
-        <p class="d-flex ">{{$cargaT->nombre}} - {{$cargaT->direccion}}</p>
+        <p>{{$cargaT->nombre}} - {{$cargaT->direccion}}</p>
 
     </div> 
     <button class="btn btn-primary" onclick="imprimir('codigoQR')">Imprimir</button>
