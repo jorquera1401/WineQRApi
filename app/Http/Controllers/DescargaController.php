@@ -17,6 +17,22 @@ class DescargaController extends Controller
     }
 
     /**
+     * retorna el dataset de descarga para la API 
+     * 
+     */
+    public function cargar(){
+       $descarga = Descarga::all();
+       $data =[];
+       $data['total'] = collect($descarga)->count();
+       $data['promedioDistancia'] = (int)collect($descarga)->avg('distancia');
+       foreach($descarga as $item){
+           $data['fecha'][] = substr($item->fecha,0,11);
+           $data['hora'][]  = substr($item->fecha,11);
+           $data['distancia'][] = $item->distancia;
+       } 
+       return json_encode($data);
+    }
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
