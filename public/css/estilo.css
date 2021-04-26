@@ -1,0 +1,48 @@
+.imagen{
+    object-fit: cover;
+    width: 35vw;
+    height: 60vh;
+   
+}
+
+.centro{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.vignette {
+    position: relative;
+  }
+  
+  .vignette img {
+    display: block;
+  }
+ 
+  .vignette:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 0 150px 30px rgba(0, 0, 0, 1) inset;
+  }
+
+  .fondo-text{
+      background-color: rgba(0, 0, 0, 0.844);
+      position:absolute;
+      bottom:0px;
+      width: 95%;
+  }
+
+  .espacio{
+      margin-bottom: 50px;
+  }
+  
+  .contenido{
+      overflow-y: auto;
+      
+      height:78vh;
+  }
