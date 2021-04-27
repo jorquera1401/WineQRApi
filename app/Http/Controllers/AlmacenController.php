@@ -21,9 +21,18 @@ class AlmacenController extends Controller
      * funcion que devuelve todos los datos de bodega
      */
     public function cargar(){
-        $bodega = Almacen::all();
+        $almacen =  Almacen::all();
+        $primer =   Almacen::oldest()->first();
+        $ultimo =   Almacen::latest()->first();
         $data = [];
-        foreach($bodega as $item){
+        $data['primerRegistro'] = $primer->fecha;
+        $data['ultimoRegistro'] = $ultimo->fecha;
+
+        $data['total'] = collect($almacen)->count();
+        $data['temperaturaPromedio'] =  round(collect($almacen)->avg('temperatura'),2);
+        $data['humedadPromedio'] =      round(collect($almacen)->avg('humedad'),2);
+
+        foreach($almacen as $item){
             $data['temperatura'][]=  $item->temperatura;
             $data['humedad'][]=$item->humedad;
             $data['fecha'][]=substr($item->fecha,0,11);
