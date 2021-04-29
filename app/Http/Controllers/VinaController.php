@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vina;
+use Illuminate\Support\Facades\Storage;
+
 class VinaController extends Controller
 {
     /**
@@ -60,7 +62,9 @@ class VinaController extends Controller
      */
     public function show($id)
     {
-        return  Vina::where('hash','like', '%'.$id)->get();
+        $vina  = Vina::where('hash','like', '%'.$id)->get();
+       
+        return  $vina;
 
     }
 

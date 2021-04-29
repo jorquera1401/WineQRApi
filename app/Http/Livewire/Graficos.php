@@ -38,7 +38,8 @@ class Graficos extends Component
             $data['fecha'][]=substr($fila->fecha,0,11);
             $data['temperaturaData'][]=(float) $fila->temperatura;
             $data['humedadData'][]=(float) $fila->humedad;
-        }
+        }  
+
         $this->dataAlmacen = json_encode($data);
 
     }

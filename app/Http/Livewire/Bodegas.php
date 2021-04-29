@@ -130,6 +130,18 @@ class Bodegas extends Component{
         }
         $this->dataAlmacen = json_encode($object);
 
+        $data = [];
+        $object = [];
+        foreach($descarga as $fila){
+            $data['id'] = $fila->id;
+            $data['hora'] = substr($fila->fecha,11);
+            $data['fecha'] = substr($fila->fecha,0,11);
+            $data['distancia']= (float)$fila->distancia/100;
+            $object[]=$data;
+        }
+
+        $this->dataDescarga = json_encode($object);
+        
     }
  
 

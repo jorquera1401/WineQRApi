@@ -9,7 +9,7 @@ use PHPUnit\Util\Json;
 class BodegaController extends Controller
 {
 
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,12 +18,22 @@ class BodegaController extends Controller
     public function index()
     {
         $tabla  =true;
-        return view('bodega')->with('tabla',$tabla);
+        $hasDatos = Bodega::all();
+        $datos = true;
+        if($hasDatos->isEmpty()){
+            $datos = false;
+        }
+        return view('bodega')->with('tabla',$tabla)->with('datos',$datos);
     }
 
     public function cargarGrafico(){
         $tabla = false;
-        return view('bodega')->with('tabla',$tabla);
+        $hasDatos = Bodega::all();
+        $datos = true;
+        if($hasDatos->isEmpty()){
+            $datos = false;
+        }
+        return view('bodega')->with('tabla',$tabla)->with('datos',$datos);
     }
 
     /**
