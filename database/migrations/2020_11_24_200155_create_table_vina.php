@@ -19,7 +19,7 @@ class CreateTableVina extends Migration
             $table->string('direccion');
             $table->string('descripcion');
             $table->string('hash')->unique();
-            
+         
 
             $table->timestamps();
         });

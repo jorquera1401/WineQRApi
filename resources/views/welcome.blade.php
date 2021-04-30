@@ -48,12 +48,7 @@
                     <div class="sidebar-heading">
                         Administracion
                     </div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('vina') }}">
-                            <i class="fas fa-fw fa-cog"></i>
-                            <span>Viñas</span>
-                        </a> 
-                    </li>
+                    
         
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="{{route('cosecha')}}"  aria-controls="collapseUtilities">
@@ -81,7 +76,13 @@
                             <i class="fas fa-fw fa-table"></i>
                             <span>Gráficos</span></a>
                     </li>
-                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('vina') }}">
+                            <i class="fas fa-fw fa-cog"></i>
+                            <span>Utilidades</span>
+                        </a> 
+                    </li>
+                    
                 </ul>
 
             <div id="content-wrapper" class="d-flex flex-column">

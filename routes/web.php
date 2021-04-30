@@ -39,5 +39,5 @@ Route::get('/tablas','BodegaController@index')->name('tablas');
 Route::get('/graficos','BodegaController@cargarGrafico')->name('graficos');
 
 
-//livewire
+
  
