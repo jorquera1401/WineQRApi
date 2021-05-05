@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 use App\Models\Almacen;
 class AlmacenController extends Controller
@@ -75,6 +77,15 @@ class AlmacenController extends Controller
     public function show($id)
     {
         return Almacen::where('id', $id)->get();
+    }
+
+          /**
+     * Imagen en base64 de la viña
+     */
+    public function getImage(){
+        $imagen = Storage::disk('images_base64')->get('almacen');
+        $data['imagen'] =  $imagen;
+        return json_encode($data,JSON_UNESCAPED_SLASHES);
     }
 
     /**

@@ -42,6 +42,7 @@
         <div class="d-flex  justify-content-center   border border-secondary">
             <img class="img-fluid rounded float-right" width="80%" height="80%" src="{{$imagen}}"/>
         </div>
+        
         @endif
     </div>
 </div>
@@ -51,6 +52,7 @@
 
 <script>
    
+
 
     $("#imagen").on('change',function(e){
         let size = (this.files[0].size / 1024) / 1024 ;

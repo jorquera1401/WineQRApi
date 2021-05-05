@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 //Ruta para ver datos de viña
 Route::resource('vina', 'VinaController',
-    ['only'=>['index','store','show']]);
+    ['only'=>['index','store','show','getImage']]);
 
 Route::resource('vina','VinaController',
     ['except'=>['create','edit','update','destroy']]);
@@ -64,8 +64,17 @@ Route::resource('bodega', 'BodegaController',
 Route::resource('bodega', 'BodegaController',
     ['except'=>['create','update','destroy','edit']]);
 
-Route::get('bodega', 'BodegaController@cargar');
+Route::get('bodega', 'BodegaController@cargar')->name('bodega.cargar');
 
-Route::get('almacen','AlmacenController@cargar');
+Route::get('almacen','AlmacenController@cargar')->name('almacen.cargar');
 
-Route::get('descarga','DescargaController@cargar');
+Route::get('descarga','DescargaController@cargar')->name('descarga.cargar');
+
+Route::get('vinaimage','VinaController@getImage')->name('vina.image');
+Route::get('predioimage','PredioController@getImage')->name('predio.image');
+Route::get('cosechaimage','CosechaController@getImage')->name('cosecha.image');
+Route::get('cargaimage','CargaController@getImage')->name('carga.image');
+Route::get('descargaimage','DescargaController@getImage')->name('descarga.image');
+Route::get('almacenimage','AlmacenController@getImage')->name('almacen.image');
+Route::get('bodegaimage','BodegaController@getImage')->name('bodega.image');
+

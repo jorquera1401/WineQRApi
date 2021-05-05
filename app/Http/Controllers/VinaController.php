@@ -70,6 +70,16 @@ class VinaController extends Controller
 
 
     /**
+     * Imagen en base64 de la viña
+     */
+    public function getImage(){
+        $imagen = Storage::disk('images_base64')->get('almacen');
+        $data['imagen'] =  $imagen;
+        return json_encode($data,JSON_UNESCAPED_SLASHES);
+    }
+
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

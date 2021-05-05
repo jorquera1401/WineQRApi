@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\Predio;
+use Illuminate\Support\Facades\Storage;
 
 class PredioController extends Controller
 {
@@ -53,6 +54,15 @@ class PredioController extends Controller
     public function show($id)
     {
         return Predio::where('hash', $id)->get();
+    }
+
+      /**
+     * Imagen en base64 de la viña
+     */
+    public function getImage(){
+        $imagen = Storage::disk('images_base64')->get('predio');
+        $data['imagen'] =  $imagen;
+        return json_encode($data,JSON_UNESCAPED_SLASHES);
     }
 
     /**

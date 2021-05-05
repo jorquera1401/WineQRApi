@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Carga;
 use App\Models\Vina;
 
-
+use Illuminate\Support\Facades\Storage;
 
 class CargaController extends Controller
 {
@@ -66,6 +66,16 @@ class CargaController extends Controller
     public function show($id)
     {
         return Carga::where('hash_salida', $id)->get();
+    }
+
+    
+      /**
+     * Imagen en base64 de la viña
+     */
+    public function getImage(){
+        $imagen = Storage::disk('images_base64')->get('carga');
+        $data['imagen'] =  $imagen;
+        return json_encode($data,JSON_UNESCAPED_SLASHES);
     }
 
     /**

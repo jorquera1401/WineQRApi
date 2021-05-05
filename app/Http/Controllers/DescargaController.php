@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Descarga;
+use Illuminate\Support\Facades\Storage;
+
+
+
 class DescargaController extends Controller
 {
     /**
@@ -24,11 +28,11 @@ class DescargaController extends Controller
        $descarga = Descarga::all();
        $data =[];
        $data['total'] = collect($descarga)->count();
-       $data['promedioDistancia'] = (int)collect($descarga)->avg('distancia');
+       $data['promedioDistancia'] = (int)collect($descarga)->avg('distancia')/100;
        foreach($descarga as $item){
            $data['fecha'][] = substr($item->fecha,0,11);
            $data['hora'][]  = substr($item->fecha,11);
-           $data['distancia'][] = $item->distancia;
+           $data['distancia'][] = (float) round($item->distancia/100,2);
        } 
        return json_encode($data);
     }
@@ -66,6 +70,15 @@ class DescargaController extends Controller
     public function show($id)
     {
         return Descarga::where('id',$id)->get();
+    }
+    
+          /**
+     * Imagen en base64 de la viña
+     */
+    public function getImage(){
+        $imagen = Storage::disk('images_base64')->get('descarga');
+        $data['imagen'] =  $imagen;
+        return json_encode($data,JSON_UNESCAPED_SLASHES);
     }
 
     /**

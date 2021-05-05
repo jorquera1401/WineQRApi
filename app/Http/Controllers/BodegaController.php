@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bodega;
+use Illuminate\Support\Facades\Storage;
 use PHPUnit\Util\Json;
+
 
 class BodegaController extends Controller
 {
@@ -103,6 +105,15 @@ class BodegaController extends Controller
     public function show($id)
     {
         return Bodega::where('id', $id)->get();
+    }
+
+          /**
+     * Imagen en base64 de la viña
+     */
+    public function getImage(){
+        $imagen = Storage::disk('images_base64')->get('bodega');
+        $data['imagen'] =  $imagen;
+        return json_encode($data,JSON_UNESCAPED_SLASHES);
     }
 
     /**

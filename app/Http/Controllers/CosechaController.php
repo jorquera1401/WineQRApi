@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cosecha;
+use Illuminate\Support\Facades\Storage;
 
 class CosechaController extends Controller
 {
@@ -60,6 +61,16 @@ class CosechaController extends Controller
     public function show($id)
     {
         return Cosecha::where('hash_salida', $id)->get();
+    }
+
+    
+      /**
+     * Imagen en base64 de la viña
+     */
+    public function getImage(){
+        $imagen = Storage::disk('images_base64')->get('cosecha');
+        $data['imagen'] =  $imagen;
+        return json_encode($data,JSON_UNESCAPED_SLASHES);
     }
 
     /**
