@@ -6,15 +6,15 @@
     
     @if($cargaData)
     <div class="card ">
-        <div class="card-header text-center bg-info text-white">
-            Resumen
+        <div class="card-header text-center bg-info text-white header-resumen">
+            <h5><b>Resumen</b></h5>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <p>Primer Registro Fecha : {{substr($primeraCaptura,0,11)}} Hora: {{substr($primeraCaptura,11)}}</p>
+                <p><i class="fas fa-flag"></i> Primer Registro  <i class="far fa-calendar"></i> Fecha :<b> {{substr($primeraCaptura,0,11)}}</b> <i class="far fa-clock"></i> Hora: <b>{{substr($primeraCaptura,11)}}</b></p>
             </li>
             <li class="list-group-item">
-                <p>Ultima Registro Fecha:{{substr($ultimaCaptura,0,11)}} Hora : {{substr($ultimaCaptura,11)}} </p>
+                <p><i class="far fa-flag"></i> Ultima Registro <i class="far fa-calendar"></i> Fecha:<b>{{substr($ultimaCaptura,0,11)}} </b><i class="far fa-clock"></i> Hora : <b>{{substr($ultimaCaptura,11)}}</b> </p>
             </li>
             <li class="list-group-item">
                 <p>Peso Promedio: {{$promedioPeso}} Kg</p>
@@ -26,29 +26,24 @@
         </ul>
 
     </div>
-    <div class="card text-center bg-light">
-        <div class="card-header bg-primary text-white">Datos</div>    
-
-    
-    <div class="card-body">
-        <table id="tabla_carga" class="table ">
-            <thead>
-                <th>ID</th>
-                <th>FECHA</th>
-                <th>HORA</th>
-                <th>PESO (KG)</th>
-                <th></th>
-            </thead>
-        </table>
-    </div>
+    <div class="card  bg-light ">
+        <div class="card-header text-center bg-primary text-white header-informe"><h5><b>Datos</b></h5></div>    
+        <div class="card-body">
+            <table id="tabla_carga" class="table ">
+                <thead>
+                    <th>ID</th>
+                    <th>FECHA</th>
+                    <th>HORA</th>
+                    <th>PESO (KG)</th>
+                    <th></th>
+                </thead>
+            </table>
+        </div>
     </div>
     @else
         <div><h1>No Existen Datos de Carga</h1></div>
     
     @endif
-
-   
-
     
 
     <div id="mymodal" class="modal " tabindex="-1" role="dialog">
@@ -76,14 +71,7 @@
                     <input readonly type="label" id="pesoCarga" class="col-sm" placeholder="Peso de Captura"/> 
                 
                 </div>
-                <input type="hidden" id="hash_salida" name="carga_item" placeholder="Codigo"/>
-        
-                
-                
-                
-                
-            
-            
+                <input type="hidden" id="hash_salida" name="carga_item" placeholder="Codigo"/>    
         </div>
         <div class="modal-footer">
             <input type="submit" class="btn btn-primary" value="Generar Codigo"/>
@@ -118,7 +106,7 @@
                 {
                     data:null,
                     render:function(data,type,fila,meta){
-                        return '<button data-hash_salida='+fila.hash_salida+' data-id='+fila.id+' data-peso='+fila.peso+' data-hora='+fila.hora+'  data-fecha='+fila.fecha+' data-hash_entrada='+fila.hash_entrada+' class="btn btn-success verCarga">Ver</button>'
+                        return '<button data-hash_salida='+fila.hash_salida+' data-id='+fila.id+' data-peso='+fila.peso+' data-hora='+fila.hora+'  data-fecha='+fila.fecha+' data-hash_entrada='+fila.hash_entrada+' class="btn btn-success verCarga"><i class="far fa-arrow-alt-circle-up"></i> Cargar</button>'
                     }
                 }
             ],

@@ -47,7 +47,7 @@ class GestionCodigo extends Component
         $this->primeraCaptura = $primero->fecha;
         $this->ultimaCaptura = $ultimo->fecha;
         $this->totalPeso = (float) collect($carga)->sum('peso');
-        $this->promedioPeso = (float)  collect($carga)->avg('peso');
+        $this->promedioPeso = (float) round(collect($carga)->avg('peso'),2);
 
 
     }

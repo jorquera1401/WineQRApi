@@ -14,8 +14,10 @@ class Bodegas extends Component{
     public $datosAlmacen;
     
     public $tPromedioB, $hPromedioB, $totalB, $tMaxB, $hMaxB, $tMinB, $hMinB;
-
     public $tPromedioA,$hPromedioA, $totalA, $tMaxA,$hMaxA,$tMinA,$hMinA;
+    public $totalD, $promedioD, $maxD, $minD;
+
+
     public $dataBodega;
     public $dataAlmacen;
     public $dataDescarga;
@@ -33,6 +35,7 @@ class Bodegas extends Component{
         
         $this->calcularEstadisticaBodega();
         $this->calcularEstadisticaAlmacen();
+        $this->calcularEstadisticaDescarga();
         $this->verData();
 
         return view('livewire.bodega');
@@ -46,7 +49,7 @@ class Bodegas extends Component{
         $filas = Bodega::all();
         $this->tPromedioB = $datosBodega / count($filas);
         $datosBodega = Bodega::sum('humedad');
-        $this->hPromedioB = $datosBodega/ count($filas);
+        $this->hPromedioB = round($datosBodega/ count($filas),2);
         $this->totalB = count($filas);
         $this->tMaxB = collect($filas)->max('temperatura');
         $this->tMinB = collect($filas)->min('temperatura');
@@ -59,12 +62,20 @@ class Bodegas extends Component{
 
         $filas = Almacen::all();
         $this->totalA = collect($filas)->count();
-        $this->tPromedioA = collect($filas)->avg('temperatura');
-        $this->hPromedioA = collect($filas)->avg("humedad");
+        $this->tPromedioA = round(collect($filas)->avg('temperatura'),2);
+        $this->hPromedioA = round(collect($filas)->avg("humedad"),2);
         $this->tMaxA = collect($filas)->max('temperatura');
         $this->hMaxA = collect($filas)->max('humedad');
         $this->tMinA = collect($filas)->min('temperatura');
         $this->hMinA = collect($filas)->min('humedad');
+    }
+
+    private function calcularEstadisticaDescarga(){
+        $filas = Descarga::all();
+        $this->totalD = collect($filas)->count();
+        $this->promedioD = round(collect($filas)->avg('distancia')/100,2);
+        $this->maxD = collect($filas)->max('distancia');
+        $this->minD = collect($filas)->min('distancia');
     }
 
     /**

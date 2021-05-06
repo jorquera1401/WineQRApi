@@ -46,21 +46,16 @@
                     <hr class="sidebar-divider my-0">
                     <hr class="sidebar-divider">
                     <div class="sidebar-heading">
-                        Administracion
+                        <h5>Administración</h5>
                     </div>
                     
         
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="{{route('cosecha')}}"  aria-controls="collapseUtilities">
-                            <i class="fas fa-fw fa-wrench"></i>
-                            <span>Cosecha</span>
-                        </a>   
-                    </li>
+         
 
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="{{route('carga')}}" aria-controls="collapseUtilities">
                             <i class="fas fa-fw fa-cash-register"></i>
-                            <span>Carga</span>
+                            <span>Generar Código</span>
                         </a>
                     </li>
 
@@ -73,7 +68,7 @@
                     
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('graficos')}}">
-                            <i class="fas fa-fw fa-table"></i>
+                            <i class="fas fa-7x fa-chart-area "></i>
                             <span>Gráficos</span></a>
                     </li>
                     <li class="nav-item">
@@ -88,7 +83,7 @@
             <div id="content-wrapper" class="d-flex flex-column">
                     
             <div id="content-wrapper" class="d-flex flex-column">
-                <div class="content">
+                <div class="content fondo">
 
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <h1 class="h3 mb-0 text-gray-800">Sistema de Trazabilidad</h1> 

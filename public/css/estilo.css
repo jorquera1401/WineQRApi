@@ -46,3 +46,29 @@
       
       height:78vh;
   }
+
+  .fondo{
+    background: rgb(241,241,241);
+    background: linear-gradient(90deg, rgba(241,241,241,1) 1%, rgba(124,158,255,1) 40%, rgba(117,161,242,1) 75%, rgba(106,157,255,1) 97%);    
+  }
+
+  .tabla{
+      width:fit-content; 
+  }
+
+  .header-resumen{
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    
+  }
+
+  .header-informe{
+    background-color: #FBAB7E;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    
+  }
+  .header-grafico{
+    background-color: #85FFBD;
+background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+
+  }

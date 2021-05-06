@@ -1,9 +1,19 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
-    <h4>Gráfico</h4>
-    <canvas id="pie-chart"></canvas>
-    <canvas id="almacen-chart"></canvas>
-    <h2>Graficos de ventana</h2>    
+ 
+    <div class="card">
+        <div class="card-header header-informe"><h3>Gráfico de Bodega</h3></div>
+    </div>
+    <div class="card-body">
+        <canvas id="pie-chart"></canvas>
+    </div>
+    <div class="card">
+        <div class="card-header header-grafico"><h3>Gráfico de Almacén de Fruta</h3></div>
+        <div class="card-body">
+            <canvas id="almacen-chart"></canvas>
+        </div>
+    </div>
+    
     <script>
 
         function graficoAlmacen(cData,canvas){
@@ -39,7 +49,7 @@
                 title:{
                     display:true,
                     position:"top",
-                    text:"Temperatura y Humedad - Almacen",
+                    text:"Temperatura y Humedad - Almacén",
                     fontSize:18,
                     fontColor:"#111"
                 },

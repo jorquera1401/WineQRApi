@@ -1,48 +1,59 @@
-<div >
-    <h1>Datos Bodega</h1>
-    @if($verDetalle)
-        @include('livewire.detalleBodega')
-    @endif
+<div id="padre" >
 
-    <div>
-        <table id="tabla_bodega" class="table table-hover table-condensed">
-            <thead>
-                <tr class="bg-gray-200">
-                    <th class="px-4 py-2">#</th>
-                    <th class="px-4 py-2">Temperatura</th>
-                    <th class="px-4 py-2">Humedad</th>
-                    <th class="px-4 py-2">Fecha</th>
-                    <th class="px-4 py-2">Hora</th>
-                    <th class="px-4 py-2">Acciones</th>
-                </tr>
-            </thead>
-        </table>       
+    <div class="card">
+        <div class="card-header" data-toggle="collapse" data-target="#bodega-expand">
+            <button class="btn btn-link"  aria-expanded="true" aria-controls="#bodega-expand">
+                <h2><i class="fas fa-industry"></i> Informe de Bodega </h2> 
+            </button>
+        </div>
     </div>
 
-    <div class="container row text-white">
-        <div class="col-6 col-md-4 bg-primary  ">
-            <h3>Resumen Datos Bodega</h3>
-         
-            <p>Cantidad de Datos: {{$totalB}}</p>
-        </div>
-        <div class="col bg-success">
-            <h3>Promedio</h3>
-            <p>Temperatura Promedio: {{$tPromedioB}}°C</p>
-            <p>Humedad Promedio : {{$hPromedioB}}%</p>
-        </div>
-        <div class="col bg-danger  ">
-            <h3>Máxima</h3>
-            <p>Temperatura Maxima : {{$tMaxB}}°C</p>
-            <p>Humedad Máxima : {{$hMaxB}}%</p>
-            
-        </div>
-        <div class="col bg-secondary ">
-            <h3>Minima</h3>
-            <p>Temperatura Minima : {{$tMinB}}°C</p>    
-            <p>Humedad Minima : {{$hMinB}}%</p>
+    <div id="bodega-expand" class="collapse " aria-labelledby="headingOne" data-parent="#padre">
         
-        </div>    
+        
+        @if($verDetalle)
+            @include('livewire.detalleBodega')
+        @endif
 
+        <div class="card">
+            <div class="card-header header-resumen"><h5><b>Resumen</b></h5></div>
+            <div class="card-body row">
+                <div class="col-auto">
+                    <p><b>Cantidad de Datos: </b>{{$totalB}}</p>
+                </div>
+                <div class="col-auto">
+                    <p><span style="color: cadetblue"><i class="fas fa-thermometer-full"></i></span><b>Temperatura Promedio: </b>{{$tPromedioB}}°C</p>
+                    <p><b>Humedad Promedio: </b>{{$hPromedioB}}%</p>
+                </div>
+                <div class="col-auto">
+                    <p><span style="color: red"><i class="fas fa-thermometer-full"></i></span><b>Temperatura Máxma: </b>{{$tMaxB}}°C</p>
+                    <p><b>Humedad Máxima: </b>{{$hMaxB}}%</p>
+                </div>
+                <div class="col-auto">
+                    <p><i class="fas fa-thermometer-empty"></i><b>Temperatura Mínima: </b>{{$tMinB}}°C</p>
+                    <p><b>Humedad Mínima: </b>{{$hMinB}}%</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header header-informe"><h5><b>Reporte</b></h5></div>
+        
+            <div class="table-responsive card-body">
+                <table id="tabla_bodega" class=" table-hover table-condensed">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="px-4 py-2">#</th>
+                            <th class="px-4 py-2">Temperatura</th>
+                            <th class="px-4 py-2">Humedad</th>
+                            <th class="px-4 py-2">Fecha</th>
+                            <th class="px-4 py-2">Hora</th>
+                        
+                        </tr>
+                    </thead>
+                </table>       
+            </div>
+        </div>
+        
     </div>
 
     <script>
@@ -65,12 +76,7 @@
                 {data:"humedad"},
                 {data:"fecha"},
                 {data:"hora"},
-                {
-                    data : null,
-                    render:function(data,type,fila,meta){
-                         return '<button class="btn btn-success verBodega" data-id='+fila.id+'>Ver</button>';
-                    }
-                }
+            
             ],
             "fnDrawCallback":function(){
                 $(".verBodega").unbind("click").click(function(){
@@ -82,9 +88,26 @@
         });
     </script>
 
+    <div class="card">
+        <div class="card-header" data-toggle="collapse" data-target="#almacen-expand">
+            <button class="btn btn-link"  aria-expanded="true" aria-controls="#almacen-expand">
+              <h2><i class="fas fa-sitemap"></i> Informe Almacén</h2>
+            </button>
+        </div>
+    </div>
+    <div id="almacen-expand" class="collapse " aria-labelledby="headingTwo" data-parent="#padre">
     @include('livewire.almacen')
 
-    @include('livewire.descarga')
+    </div>
 
+    <div class="card">
+        <div class="card-header" data-toggle="collapse" data-target="#descarga-expand">
+            <button class="btn btn-link"  aria-expanded="true" aria-controls="#descarga-expand">
+                <h2><i class="fas fa-trailer"></i> Informe de Descarga</h2> </button>
+        </div>
+    </div>
+    <div id="descarga-expand" class="collapse " aria-labelledby="headingTwo" data-parent="#padre">
+        @include('livewire.descarga')
+    </div>
 </&div>
 

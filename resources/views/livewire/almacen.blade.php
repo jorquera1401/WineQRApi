@@ -1,49 +1,42 @@
 <div>
+ 
+    <div class="card">
+        <div class="card-header header-resumen"><h5><b>Resumen</b></h5></div>
+        <div class="card-body row">
+            <div class="col-auto">
+                <p><b>Cantidad de Datos: </b>{{$totalA}}</p>
+            </div>
+            <div class="col-auto">
+                <p><span style="color: cadetblue"><i class="fas fa-thermometer-full"></i></span><b>Temperatura Promedio: </b>{{$tPromedioA}}°C</p>
+                <p><i class="fas fa-cloud-sun"></i><b>Humedad Promedio: </b>{{$hPromedioA}}%</p>
+            </div>
+            <div class="col-auto">
+                <p><span style="color:red"><i class="fas fa-thermometer-full"></i></span><b>Temperatura Máxma: </b>{{$tMaxA}}°C</p>
+                <p><i class="fas fa-cloud-sun"></i><b>Humedad Máxima: </b>{{$hMaxA}}%</p>
+            </div>
+            <div class="col-auto">
+                <p><i class="fas fa-thermometer-empty"></i><b>Temperatura Mínima: </b>{{$tMinA}}°C</p>
+                <p><i class="fas fa-cloud-sun"></i><b>Humedad Mínima: </b>{{$hMinA}}%</p>
+            </div>
+        </div>
 
-    <h1>Datos Almacen</h1>
+    </div>
 
-
-    <div>
-        <table id="tabla_almacen" class="table table-hover table-condensed">
+    <div class="card">
+        <div class="card-header header-informe"><h5><b>Reporte</b></h5></div>
+        <table id="tabla_almacen" class="table card-body table-hover ">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Temperatura</th>
                     <th>Humedad</th>
                     <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Acciones</th>
+                    <th>Hora</th> 
                 </tr>
             </thead>
         </table>
     </div>
-
-    
-    <div class="container row text-white">
-        <div class="col-6 col-md-4 bg-primary  ">
-            <h3>Resumen Datos Bodega</h3>
-         
-            <p>Cantidad de Datos: {{$totalA}}</p>
-        </div>
-        <div class="col bg-success">
-            <h3>Promedio</h3>
-            <p>Temperatura Promedio: {{$tPromedioA}}°C</p>
-            <p>Humedad Promedio : {{$hPromedioA}}%</p>
-        </div>
-        <div class="col bg-danger  ">
-            <h3>Máxima</h3>
-            <p>Temperatura Maxima : {{$tMaxA}}°C</p>
-            <p>Humedad Máxima : {{$hMaxA}}%</p>
-            
-        </div>
-        <div class="col bg-secondary ">
-            <h3>Minima</h3>
-            <p>Temperatura Minima : {{$tMinA}}°C</p>    
-            <p>Humedad Minima : {{$hMinA}}%</p>
-        
-        </div>    
-
-    </div>
+ 
 
     <script>
         var datosAlmacen = JSON.parse('<?php echo $dataAlmacen ?>');
@@ -62,12 +55,7 @@
                 {data:"humedad"},
                 {data:"fecha"},
                 {data:"hora"},
-                {
-                    data : null,
-                    render:function(data,type,fila,meta){
-                        return '<button wire:click="visualizarAlmacen('+fila.id+')"  class="btn btn-success verAlmacen" data-id='+fila.id+'>Ver</button>';
-                    }
-                }
+               
             ],
             "fnDrawCallback":function(){
                 $(".verAlmacen").unbind("click").click(function(){
