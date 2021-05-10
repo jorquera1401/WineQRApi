@@ -57,7 +57,7 @@
     $("#imagen").on('change',function(e){
         let size = (this.files[0].size / 1024) / 1024 ;
         console.log(size,' MB');
-        if(size>1){
+        if(size>3){
           
           alert('archivo muy grande',size);
           this.value="";
