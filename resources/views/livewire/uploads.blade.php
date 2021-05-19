@@ -2,9 +2,9 @@
     {{-- Nothing in the world is as soft and yielding as water. --}}
 
 
-<div class="row card">
+<div class="row card" style="height: 80vh">
     <h2 class="card-header">Asignar Imágenes a Procesos</h2>
-<div class="row card-body" style="height: 50vh">
+<div class="row card-body" style="height: 10vh">
     
     <form class="col container col-8" id="formulario" wire:submit.prevent="subirImagen" enctype="multipart/form-data">
         
@@ -36,18 +36,20 @@
         </div>
     </form>
 
-    <div class="col col-4 container float-right"  >
-        @if($imagen and $nombreI!="")
-        <h5 class="font-weight-bold">Imagen en {{$nombreI}}</h5>
-        <div class="d-flex  justify-content-center   border border-secondary">
-            <img class="img-fluid rounded float-right" width="80%" height="80%" src="{{$imagen}}"/>
-        </div>
-        
-        @endif
+    
+<div class="row container float-right"  >
+    @if($imagen and $nombreI!="")
+    <h5 class=" col col-4 font-weight-bold">Imagen en {{$nombreI}}</h5>
+    <div class="col col-8 d-flex  justify-content-center   border border-secondary">
+        <img class="img-fluid rounded float-right" width="80%" height="80%" src="{{$imagen}}"/>
     </div>
+    
+    @endif
 </div>
 
+</div>
 
+</div>
 
 
 <script>

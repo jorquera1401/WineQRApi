@@ -1,11 +1,14 @@
 
 @extends('welcome')
 @section("codigo")
-<div class="container  col-md-8 col-md-offset-2">
+<div class="container card col-md-8 col-md-offset-2">
 
 @if($codigo)
-    <h1>Código {{$tipo}}: <span class="text-warning">{{$codigo}}</span></h1>
-    <div id="codigoQR" style="width:500px" class="title text-center container bg-danger text-white m-b-md" >
+    <div class="card-header">
+        <h1>Código {{$tipo}}: <span class="text-warning">{{$codigo}}</span></h1>
+    </div>
+    
+    <div id="codigoQR" style="width:500px" class="title text-center container card-body  text-black m-b-md" >
 
         {!!QrCode::size(300)->generate($codigo)!!}
         <p>{{$cargaT->nombre}} - {{$cargaT->direccion}}</p>
@@ -15,9 +18,7 @@
 
     <script>
         function imprimir(imagen){
-            console.log(imagen)
             var contenido = document.getElementById(imagen).innerHTML;
-            console.log(contenido);
             var contenidoOriginal = document.body.innerHTML;
             document.body.innerHTML=contenido;
             window.print();

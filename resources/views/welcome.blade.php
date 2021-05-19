@@ -31,10 +31,10 @@
         <div class="flex-center position-ref full-height">
         </div>
             <!-- Page Wrapper -->
-            <div id="wrapper">
+            <div id="wrapper" >
         
                 <!-- Sidebar -->
-                <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <ul class="navbar-nav font-weight-bold bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         
              
                     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -68,7 +68,7 @@
                     
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('graficos')}}">
-                            <i class="fas fa-7x fa-chart-area "></i>
+                            <i class="fas  fa-chart-area "></i>
                             <span>Gráficos</span></a>
                     </li>
                     <li class="nav-item">

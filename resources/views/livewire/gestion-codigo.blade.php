@@ -106,7 +106,7 @@
                 {
                     data:null,
                     render:function(data,type,fila,meta){
-                        return '<button data-hash_salida='+fila.hash_salida+' data-id='+fila.id+' data-peso='+fila.peso+' data-hora='+fila.hora+'  data-fecha='+fila.fecha+' data-hash_entrada='+fila.hash_entrada+' class="btn btn-success verCarga"><i class="far fa-arrow-alt-circle-up"></i> Cargar</button>'
+                        return '<button data-hash_salida='+fila.hash_salida+' data-id='+fila.id+' data-peso='+fila.peso+' data-hora='+fila.hora+'  data-fecha='+fila.fecha+' data-hash_entrada='+fila.hash_entrada+' class="btn btn-success verCarga"><i class="far fa-arrow-alt-circle-up"></i> Generar </button>'
                     }
                 }
             ],
