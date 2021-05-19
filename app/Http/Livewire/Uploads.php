@@ -59,7 +59,9 @@ class Uploads extends Component
         }
   
     }
-
+    /**
+     * Busca la imagen seleccionado en la opciones de la vista
+     */
     public function buscar(){
         if($this->nombreI!=''){
             $archivo = $this->getImagen($this->nombreI);
@@ -69,11 +71,22 @@ class Uploads extends Component
     }
 
     }
-
+    /**
+     * Busca en el disco la imagen correspondiente al proceso seleccionado
+     */
     public function getImagen($nombre){
-        $imagen = Storage::disk('images_base64')->get($nombre);
-        return $imagen;
+        try{     
+            $imagen = Storage::disk('images_base64')->get($nombre);
+            return $imagen;
+        }catch(FileNotFoundException $e){
+            Session::flash('warning', 'No existen imagen pre cargada del procesos en el servidor ');
+            return null;
+        }
     }
+
+    /**
+     * Guarda la imagen base_64 en el disco del sistema  
+     */
     public function guardarImagen($nombre,$imagen_codificada){
    
         $result = Storage::disk('images_base64')->put($nombre,$imagen_codificada);
@@ -81,13 +94,20 @@ class Uploads extends Component
     }
 
 
-
+    /**
+     * obtiene la imagen codificada en base_64 
+     */
     public function getB64Image($base64_image){
+        
+        
         $image_service_str = substr($base64_image,strpos($base64_image,",")+1);
         $image = base64_decode($image_service_str);
         return $image;
+        
     }
-
+    /**
+     * Obtiene el formato del archivo de la imagen y extension
+     */
     public function getB64Extension($base64_image,$full=null){
         preg_match("/^data:image\/(.*);base64/i",$base64_image, $img_extension);   
         return ($full) ?  $img_extension[0] : $img_extension[1];  

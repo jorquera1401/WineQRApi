@@ -32,7 +32,13 @@
                 <div class="alert alert-danger" role="alert">
                     {{Session::get('error')}}
                 </div>
-            @endif    
+            @endif
+            @if(Session::has('warning'))
+                <div class="alert alert-warning" role="alert">
+                    {{Session::get('warning')}}
+                    {{$imagen=null}}
+                </div>
+            @endif
         </div>
     </form>
 
@@ -59,7 +65,7 @@
     $("#imagen").on('change',function(e){
         let size = (this.files[0].size / 1024) / 1024 ;
         console.log(size,' MB');
-        if(size>3){
+        if(size>5){
           
           alert('archivo muy grande',size);
           this.value="";
