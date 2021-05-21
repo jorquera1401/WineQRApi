@@ -79,7 +79,7 @@ class Uploads extends Component
             $imagen = Storage::disk('images_base64')->get($nombre);
             return $imagen;
         }catch(FileNotFoundException $e){
-            Session::flash('warning', 'No existen imagen pre cargada del procesos en el servidor ');
+            Session::flash('warning', 'No existen imagen pre cargada de '.$nombre.' en el servidor ');
             return null;
         }
     }

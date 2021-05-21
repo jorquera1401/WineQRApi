@@ -49,7 +49,12 @@
     <div class="col col-8 d-flex  justify-content-center   border border-secondary">
         <img class="img-fluid rounded float-right" width="80%" height="80%" src="{{$imagen}}"/>
     </div>
-    
+
+    @else 
+    <div class="container ">
+        <h3>No existe Imagen</h3>
+    </div>
+        
     @endif
 </div>
 
