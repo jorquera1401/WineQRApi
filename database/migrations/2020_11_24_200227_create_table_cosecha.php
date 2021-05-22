@@ -18,7 +18,7 @@ class CreateTableCosecha extends Migration
             $table->dateTime('fecha');
             $table->float('temperatura');
             $table->float('humedad');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->integer('hash_entrada');
             $table->string('hash_salida')->unique();
             $table->timestamps();

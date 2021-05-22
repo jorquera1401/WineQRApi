@@ -16,7 +16,7 @@ class CreateTableDescarga extends Migration
         Schema::create('descarga', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('fecha');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->float('distancia');
             $table->timestamps();
       //      $table->foreign('carga_id')->references('id')->on('carga');

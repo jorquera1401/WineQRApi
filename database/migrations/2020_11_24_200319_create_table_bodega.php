@@ -18,7 +18,8 @@ class CreateTableBodega extends Migration
             $table->dateTime('fecha');
             $table->float('temperatura');
             $table->float('humedad');
-            $table->string('descripcion');
+            //$table->string('descripcion');
+            $table->longText('descripcion');
             $table->timestamps();
   //          $table->foreign('almacen_id')->references('id')->on('almacen');
         });

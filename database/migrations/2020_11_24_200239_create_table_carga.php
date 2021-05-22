@@ -17,7 +17,7 @@ class CreateTableCarga extends Migration
             $table->increments('id');
             $table->dateTime('fecha');
             $table->float('peso');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->string('hash_entrada');
             $table->string('hash_salida')->unique();
             $table->timestamps();

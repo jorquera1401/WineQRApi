@@ -16,7 +16,7 @@ class CreateTableAlmacen extends Migration
         Schema::create('almacen', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('fecha');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->float('temperatura');
             $table->float('humedad');
             $table->timestamps();

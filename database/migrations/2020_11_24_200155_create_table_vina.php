@@ -17,7 +17,7 @@ class CreateTableVina extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('direccion');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->string('hash')->unique();
          
 
