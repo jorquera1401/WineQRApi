@@ -11,8 +11,9 @@
     <div id="codigoQR" style="width:500px" class="title text-center container card-body  text-black m-b-md" >
 
         {!!QrCode::size(300)->generate($codigo)!!}
+        <p>Código :  {{$codigo}}</p>
         <p>{{$cargaT->nombre}} - {{$cargaT->direccion}}</p>
-
+        
     </div> 
     <button class="btn btn-primary" onclick="imprimir('codigoQR')">Imprimir</button>
 
