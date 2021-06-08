@@ -9,8 +9,8 @@
     <form class="col container col-8" id="formulario" wire:submit.prevent="subirImagen" enctype="multipart/form-data">
         
         <div class="form-group row">
-            <label for="nombre">Nombre</label>
-            <select wire:model="nombreI" id="seleccion" wire:click="buscar()" class="form-select list-group" aria-label="Default selext Example">
+            <label for="nombre" class="col-3">Nombre</label>
+            <select wire:model="nombreI" id="seleccion" wire:click="buscar()" class="form-select list-group col-8" aria-label="Default selext Example">
                 <option class="list-group-item" value="" selected>Seleccionar Proceso</option>
                 <option class="list-group-item" value="vina">Viña</option>
                 <option class="list-group-item" value="predio">Predio</option>
@@ -22,37 +22,52 @@
             </select>
         </div>
         <div class="form-group row">
-            <label for="imagen">File:</label>
-            <input type="file" class="form-control" id="imagen" wire:model="foto"> 
+            <label for="imagen" class="col-3">Archivo:</label>
+            <input type="file" class="form-control col-8" id="imagen" wire:model="foto"> 
         </div>
-      
-        <input type="submit"  id="boton" class="btn btn-success" value="Guardar"/>
+        <input type="submit"  id="boton"    class="  btn btn-success" value="Guardar"/>
+            
         <div class="row">
-            @if(Session::has('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{Session::get('error')}}
-                </div>
-            @endif
-            @if(Session::has('warning'))
-                <div class="alert alert-warning" role="alert">
-                    {{Session::get('warning')}}
-                    {{$imagen=null}}
-                </div>
-            @endif
+            <div class="col-8">
+                @if(Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{Session::get('error')}}
+                    </div>
+                 
+                @endif
+                @if(Session::has('warning'))
+                    <div class="alert alert-warning" role="alert">
+                        {{Session::get('warning')}}
+                        {{$imagen=null}}
+                    </div>
+                @endif
+
+                @if($foto)
+                    <div class="alert alert-info" role="alert">
+                        <span>Imagen lista para almacenar</span>
+                    </div>
+                @endif
+            </div>
         </div>
+        
     </form>
 
     
 <div class="row container float-right"  >
     @if($imagen and $nombreI!="")
-    <h5 class=" col col-4 font-weight-bold">Imagen en {{$nombreI}}</h5>
-    <div class="col col-8 d-flex  justify-content-center   border border-secondary">
-        <img class="img-fluid rounded float-right" width="80%" height="80%" src="{{$imagen}}"/>
-    </div>
-
+        <div class="col col-4">
+            <h5 class="row font-wight-bold">Imagen de {{$nombreI}}</h5>
+            <button class="row button"  wire:click="eliminar()" >Eliminar</button>
+        </div>
+        {{--  <h5 class=" col col-4 font-weight-bold">Imagen en {{$nombreI}}</h5>  --}}
+        <div class="col col-8 d-flex  justify-content-center   border border-secondary">
+            <img class="img-fluid rounded float-right" width="80%" height="80%" src="{{$imagen}}"/>
+        </div>
     @else 
+    {{$imagen=null}}
     <div class="container ">
         <h3>No existe Imagen</h3>
+
     </div>
         
     @endif

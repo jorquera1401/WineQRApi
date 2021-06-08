@@ -30,7 +30,7 @@ class Uploads extends Component
      * Transforma imagen a base 64
      */
     public function subirImagen(){
- 
+     
        if($this->nombreI!=''){
         if($this->foto){
 
@@ -52,10 +52,12 @@ class Uploads extends Component
             $this->imagen = $archivo;
             $this->foto=null;
         }else{
-            Session::flash('error','Cargar imagen');
+            Session::flash('error','Error, no se cargó la imagen correctamente');
+            $this->foto=null;
         }
         }else{
              Session::flash('error','Seleccione un proceso para el nombre de la imagen');
+             $this->foto=null;
         }
   
     }
@@ -68,8 +70,14 @@ class Uploads extends Component
         if($archivo){
             $this->imagen = $archivo;
         }
+        }
     }
-
+    public function eliminar(){
+        if($this->nombreI!=''){
+            $imagen = Storage::disk('images_base64')->delete($this->nombreI);
+            Session::flash('error', 'Se eliminó '.$this->nombreI.' del sistema de archivo');
+            $this->imagen=null;
+        }
     }
     /**
      * Busca en el disco la imagen correspondiente al proceso seleccionado
