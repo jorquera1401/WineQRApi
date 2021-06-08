@@ -11,6 +11,7 @@ class GestionCodigo extends Component
     public $hola;
     public $totalPeso, $promedioPeso;
     public $primeraCaptura, $ultimaCaptura;
+    public $ver;
     public function render()
     {
         $this->verCargas();
@@ -24,17 +25,22 @@ class GestionCodigo extends Component
     public function verCargas(){
 
         $filas  = Carga::all();
-        $objeto = [];
-        foreach($filas as $fila){    
-            $data['id'] = $fila->id;
-            $data['fecha']= substr($fila->fecha,0,11);
-            $data['hora']= substr($fila->fecha,11);
-            $data['peso'] = (float)$fila->peso;
-            $data['hash_entrada'] = $fila->hash_entrada;
-            $data['hash_salida']=$fila->hash_salida;
-            $objeto[]= $data;
+        if($filas->count()>0){
+            $objeto = [];
+            foreach($filas as $fila){    
+                $data['id'] = $fila->id;
+                $data['fecha']= substr($fila->fecha,0,11);
+                $data['hora']= substr($fila->fecha,11);
+                $data['peso'] = (float)$fila->peso;
+                $data['hash_entrada'] = $fila->hash_entrada;
+                $data['hash_salida']=$fila->hash_salida;
+                $objeto[]= $data;
+            }
+            $this->cargaData=json_encode($objeto);
+            $this->ver = true;
+        }else{
+            $this->ver = false;
         }
-        $this->cargaData=json_encode($objeto);
     }
 
     /**
