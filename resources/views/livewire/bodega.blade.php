@@ -15,6 +15,7 @@
             @include('livewire.detalleBodega')
         @endif
 
+        @if($verBodega)
         <div class="card">
             <div class="card-header header-resumen"><h5><b>Resumen</b></h5></div>
             <div class="card-body row">
@@ -39,7 +40,7 @@
             <div class="card-header header-informe"><h5><b>Reporte</b></h5></div>
         
             <div class="table-responsive card-body">
-                <table id="tabla_bodega" class=" table-hover table-condensed">
+                <table id="tabla_bodega" class="display table-bordered  table-hover " style="width:100%">
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="px-4 py-2">#</th>
@@ -53,10 +54,20 @@
                 </table>       
             </div>
         </div>
+        @else
+        <div class="card">
+            <div class="card-header">
+                <h1>No existen datos de bodega disponible</h1>
+            </div>
+        </div>
+        
+        @endif
         
     </div>
-
+ 
     <script>
+ 
+
         var datosBodega= JSON.parse('<?php echo $dataBodega ?>');
         var detalleAlmacen;
         $(document).ready(function(){
@@ -67,6 +78,8 @@
         
 
         $("#tabla_bodega").DataTable({
+            dom:'Bfrtip',
+            buttons:['csv','excel','pdf'],
             data: datosBodega, 
             responsive:true,
             columns:[
@@ -96,7 +109,7 @@
         </div>
     </div>
     <div id="almacen-expand" class="collapse " aria-labelledby="headingTwo" data-parent="#padre">
-    @include('livewire.almacen')
+      @include('livewire.almacen')
 
     </div>
 

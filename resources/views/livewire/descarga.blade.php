@@ -1,5 +1,5 @@
 <div>
- 
+    @if($verDescarga)
     <div class="card">
         <div class="card-header header-resumen">
             <h5><b>Resumen</b></h5>
@@ -30,7 +30,7 @@
         </div>
     
     <div class="card-body">
-        <table id="tabla_descarga"  class="table tabla table-hover ">
+        <table id="tabla_descarga"  class="table tabla table-hover table-bordered " style="width:100%">
             <thead >
                 <tr>
                     <th>ID</th>
@@ -44,6 +44,14 @@
     </div>
     </div>
 
+    @else 
+        <div class="card">
+            <div class="card-header">
+                <h1>No existen datos de descarga disponible</h1>
+            </div>
+        </div>
+    @endif
+
     <script>
         var datosDescarga = JSON.parse('<?php echo $dataDescarga ?>');
         var detalleAlmacen;
@@ -53,6 +61,8 @@
         
         })
        $("#tabla_descarga").DataTable({
+            dom:'Bfrtip',
+            buttons:['csv','excel','pdf'],
             data: datosDescarga, 
             responsive:true,
             columns:[

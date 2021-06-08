@@ -29,7 +29,7 @@
     <div class="card  bg-light ">
         <div class="card-header text-center bg-primary text-white header-informe"><h5><b>Datos</b></h5></div>    
         <div class="card-body">
-            <table id="tabla_carga" class="table ">
+            <table id="tabla_carga" class="table  table-bordered " style="width: 100%">
                 <thead>
                     <th>ID</th>
                     <th>FECHA</th>

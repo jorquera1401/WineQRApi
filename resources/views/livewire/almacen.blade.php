@@ -1,5 +1,5 @@
 <div>
- 
+    @if($verAlmacen)
     <div class="card">
         <div class="card-header header-resumen"><h5><b>Resumen</b></h5></div>
         <div class="card-body row">
@@ -24,7 +24,7 @@
 
     <div class="card">
         <div class="card-header header-informe"><h5><b>Reporte</b></h5></div>
-        <table id="tabla_almacen" class="table card-body table-hover ">
+        <table id="tabla_almacen" class="table card-body table-hover table-bordered  " style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -36,9 +36,22 @@
             </thead>
         </table>
     </div>
+    @else 
+        <div class="card">
+            <div class="card-header">
+                <h1><span>No existen datos de almacén disponibles</span></h1>
+            </div>
+            
+        </div>
+        
+    @endif
  
 
     <script>
+
+    
+
+
         var datosAlmacen = JSON.parse('<?php echo $dataAlmacen ?>');
         var detalleAlmacen;
         $(document).ready(function(){
@@ -46,6 +59,8 @@
         
         })
         $("#tabla_almacen").DataTable({
+            dom:'Bfrtip',
+            buttons:['csv','excel','pdf'],
             data: datosAlmacen, 
             responsive:true,
             columns:[
