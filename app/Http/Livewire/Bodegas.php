@@ -52,7 +52,7 @@ class Bodegas extends Component{
         $datosBodega = Bodega::sum('temperatura');
         $filas = Bodega::all();
         if($filas->count()>0){
-            $this->tPromedioB = $datosBodega / count($filas);
+            $this->tPromedioB = round($datosBodega / count($filas),2);
             $datosBodega = Bodega::sum('humedad');
             $this->hPromedioB = round($datosBodega/ count($filas),2);
             $this->totalB = count($filas);
